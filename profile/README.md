@@ -1,6 +1,8 @@
 ﻿# InfiniTensor：人工智能编译器与大模型系统训练营（2024 夏季）
 
-> [教学网站](https://opencamp.cn/InfiniTensor/camp/2024summer)
+[教学网站](https://opencamp.cn/InfiniTensor/camp/2024summer)
+|
+[参与讨论](https://github.com/orgs/LearningInfiniTensor/discussions)
 
 ## 开营仪式
 
