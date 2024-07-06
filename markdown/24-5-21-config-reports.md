@@ -59,8 +59,6 @@ D:/project-8/
     |-- # 此部分就是引擎仓库，具体内容除Cargo.toml，略
     |-- Cargo.toml
     |-- ...
-|-- cuda-driver
-    |-- # 这部分存放了依赖项，可以不用，后续会介绍
 |-- models
     |-- # 此部分是模型文件夹，我用它来存放所有的模型
     |-- TinyLlama-1.1B-Chat-v1.0
