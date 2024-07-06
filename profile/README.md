@@ -8,7 +8,7 @@
 
 InfiniTensor 2024 夏季训练营开营仪式将于 2024 年 7 月 20 日晚 20:00 于线上举行。
 
-参加仪式：\# 腾讯会议：242-395-560 或链接 <https://meeting.tencent.com/dm/6LV9k8mUVl8X>。
+参加仪式：\# 腾讯会议：242-395-560 或链接 [https://meeting.tencent.com/dm/6LV9k8mUVl8X](https://meeting.tencent.com/dm/6LV9k8mUVl8X)。
 
 ## 支持团队
 
@@ -35,3 +35,7 @@ RefactorGraph 即“重构图表示”，是继 InfiniTensor 之后的下一代�
 [![Latest version](https://img.shields.io/crates/v/cndrv.svg)](https://crates.io/crates/cndrv)
 
 cndrv 是中科寒武纪公司推出的系列加速硬件的 Rust 驱动绑定。该项目对 C 接口重新做了安全的 Rust 抽象，兼顾性能和易用性。现已发布到 crates.io，crates.io 上第二个带有 #cambricon 标签的 crate（第一个是其依赖项，用于定位寒武纪开发环境）。本项目已作为 InfiniLM 项目的依赖投入使用。
+
+## InfiniTensor训练营（2024夏季）常见问题
+
+详情请见：[InfiniTensor训练营（2024夏季）常见问题](../markdown/qa.md)
