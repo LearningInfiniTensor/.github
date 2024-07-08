@@ -4,7 +4,7 @@
 |
 [参与讨论](https://github.com/orgs/LearningInfiniTensor/discussions)
 |
-[**常见问题**](../qa.md)
+[**常见问题**](../qa/qa.md)
 
 ## 开营仪式 🎉🎉🎉
 
