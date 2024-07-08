@@ -4,7 +4,7 @@
 |
 [参与讨论](https://github.com/orgs/LearningInfiniTensor/discussions)
 |
-[**常见问题**](../qa/qa.md)
+[**常见问题**](../qa/doc.md)
 
 ## 开营仪式 🎉🎉🎉
 
@@ -14,7 +14,7 @@ InfiniTensor 2024 夏季训练营开营仪式将于 2024 年 7 月 20 日晚 20:
 
 ## 导学阶段实践 💻
 
-我们鼓励学员通过实践理解项目。初学者推荐在本机跑起 [InfiniLM] 项目，以熟悉 git 命令，了解模型文件、推理引擎的概念和推理的过程。
+我们鼓励学员通过实践理解项目。初学者推荐在本机跑起 [InfiniLM](https://github.com/InfiniTensor/InfiniLM) 项目，以熟悉 git 命令，了解模型文件、推理引擎的概念和推理的过程。
 
 参考[基于 Rust 的大模型推理引擎使用教程](../InfiniLM-user-guide/doc.md)完成实践。
 
