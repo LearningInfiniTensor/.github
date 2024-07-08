@@ -1,4 +1,4 @@
-# 导学阶段常见问题：
+# 导学阶段常见问题
 
 1. 除了cpp和rust还需要什么专业基础嘛？
 
@@ -26,6 +26,7 @@
    > # Windows系统则查看C:\Users\<Your Username>\.ssh文件夹下
    > # 存在可直接看第三步
    > ```
+   >
    > **第二步：生成ssh key**
    >
    > ```shell
@@ -33,6 +34,7 @@
    > # 一直回车即可
    > # Windows系统下同理，不想要后面一串也可以直接运行ssh-keygen指令
    > ```
+   >
    > **第三步：获取ssh key公钥内容并添加到Github**
    >
    > 复制 `id_rsa.pub`文件内的内容，之后Github右上角点击头像->Settings->SSH and GPG keys->右上角蓝色New SSH key按钮->将复制的内容粘贴到Key输入框中添加title以便管理->最后点击Add SSH key即可
