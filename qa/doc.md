@@ -27,6 +27,7 @@
    > # Windows 系统则查看 C:\Users\<Your Username>\.ssh 文件夹下
    > # 存在可直接看第三步
    > ```
+   >
    > **第二步：生成 ssh key**
    >
    > ```shell
@@ -34,6 +35,7 @@
    > # 一直回车即可
    > # Windows 系统下同理，不想要后面一串也可以直接运行 ssh-keygen 指令
    > ```
+   >
    > **第三步：获取 ssh key 公钥内容并添加到 Github**
    >
    > 复制 `id_rsa.pub` 文件内的内容，之后 Github 右上角点击头像->Settings->SSH and GPG keys->右上角蓝色 New SSH key 按钮->将复制的内容粘贴到 Key 输入框中添加 title 以便管理->最后点击 Add SSH key 即可。
@@ -91,4 +93,8 @@
 
     > InfiniTensor使用C++17；RefactorGraph使用C++20
     >
-14. ...
+14. 有没有正式课程的文档？对于有Rust经验的学生可以先看看正式课程
+
+    > 暂时还没有，有基础的可以看[上期训练营的回放](https://opencamp.cn/os2edu/camp/2024spring/stage/10?tab=video)
+    >
+15. ...
