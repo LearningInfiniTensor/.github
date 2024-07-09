@@ -180,3 +180,52 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   > **NOTICE** 此命令的 `--model` 参数相关要求与前述 cast 命令相同。
 
   > **NOTICE** 此命令默认同样采用“最优”的采样策略，设置随机采样参数的方式与前述 generate 命令相同。
+
+## 运行中的常见问题
+
+> ![out-of-bound](err-idx-out-of-bound.png)
+>
+> **关键字**：`index out of bounds:`
+>
+> 遇到以上输出为模型（model.safetensors）文件拉取不完整导致，对于 lfs 大文件需要手动下载放入模型文件中。
+>
+> 另外，运行 InfiniLM 需要将 Rust 版本更新至最新的 1.79.0 以上，即最新的 stable 或更高的 nightly。
+>
+
+> ![cast_error_nvcc](cast_error_nvcc.png)
+>
+> **关键字**：`... with args nvcc did not execute successfully`
+>
+> 遇到以上输出为项目代码中写死的架构号对于Nvidia老卡不兼容导致，需要在 `devices/nvidia-gpu/build.rs`中将两个80改为对应显卡的架构号
+>
+> ```rust
+> // in ./devices/nvidia-gpu/build.rs
+>
+> fn main() {
+>     use build_script_cfg::Cfg;
+>     use search_cuda_tools::find_cuda_root;
+>
+>     let cuda = Cfg::new("detected_cuda");
+>     if find_cuda_root().is_some() {
+>         cuda.define();
+>         println!("cargo:rerun-if-changed=src/sample.cu");
+>         cc::Build::new()
+>             .cuda(true)
+>             .flag("-gencode")
+>             .flag("arch=compute_80,code=sm_80") // 修改此处两个80为对应显卡架构号
+>             .flag("-allow-unsupported-compiler")
+>             .file("src/sample.cu")
+>             .compile("sample");
+>     }
+> }
+> ```
+>
+> **若还出现以上错误，或不能正确运行建议参考[Q&A中第14问]关闭nvidia features运行**
+>
+
+> ![clang_error](clang_error.png)
+>
+> **关键字**：`Unable to find libclang:`
+>
+> 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
+>

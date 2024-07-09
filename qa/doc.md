@@ -54,13 +54,7 @@
    >
 7. InfiniLM 运行报错怎么办？
 
-   > ![out-of-bound](err-idx-out-of-bound.png)
-   >
-   > **关键字**：`index out of bounds:`
-   >
-   > 遇到以上输出为模型（model.safetensors）文件拉取不完整导致，对于 lfs 大文件需要手动下载放入模型文件中。
-   >
-   > 另外，运行 InfiniLM 需要将 Rust 版本更新至最新的 1.79.0 以上，即最新的 stable 或更高的 nightly。
+   > 详情请见[InfiniLM运行中常见问题](../InfiniLM-user-guide/doc.md#qa)，若未能找到问题解决方法请在群里提问或找老师解决
    >
 8. 用 InfiniLM 对话，模型不会说中文怎么办？
 
@@ -77,7 +71,7 @@
 10. 这个训练营和编译器有啥关系？
 
     > 其实深度学习编译器和编译器是两个东西，就好像javascript和java是两个东西
-    > 也可参考[AI编译器与传统编译器的联系与区别](https://blog.csdn.net/weixin_44966641/article/details/121629901)
+    > 也可参考针对[神经网络的编译器和传统编译器的区别和联系是什么？](https://www.zhihu.com/question/396105855)
     >
 11. 后续的AI编译器主要是做cuda后端的吗？
 
@@ -97,38 +91,7 @@
 
     > 暂时还没有，有基础的可以看[上期训练营的回放](https://opencamp.cn/os2edu/camp/2024spring/stage/10?tab=video)
     >
-15. 运行InfiniLM进行模型cast转换操作发生 `nvcc`和 `clang`相关错误
-
-    > ![cast_error_nvcc](cast_error_nvcc.png)
-    > 遇到以上输出为项目代码中写死的架构号对于Nvidia老卡不兼容导致，需要在 `devices/nvidia-gpu/build.rs`中将两个80改为对应显卡的架构号
-    >
-    > ```rust
-    > // in ./devices/nvidia-gpu/build.rs
-    >
-    > fn main() {
-    >     use build_script_cfg::Cfg;
-    >     use search_cuda_tools::find_cuda_root;
-    >
-    >     let cuda = Cfg::new("detected_cuda");
-    >     if find_cuda_root().is_some() {
-    >         cuda.define();
-    >         println!("cargo:rerun-if-changed=src/sample.cu");
-    >         cc::Build::new()
-    >             .cuda(true)
-    >             .flag("-gencode")
-    >             .flag("arch=compute_80,code=sm_80") // 修改此处两个80为对应显卡架构号
-    >             .flag("-allow-unsupported-compiler")
-    >             .file("src/sample.cu")
-    >             .compile("sample");
-    >     }
-    > }
-    > ```
-    >
-    > **若还出现以上错误，或不能正确运行建议参考第16问关闭nvidia features运行**
-    > ![clang_error](clang_error.png)
-    > 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
-    >
-16. InfiniLM不用Nvidia显卡能运行吗？
+15. InfiniLM不用Nvidia显卡能运行吗？
 
     > 可以的，不过现在即使不用Nvidia显卡，检测到环境也会编译。也可以在`xtask/Cargo.toml`里关掉默认`features`解决
     >
@@ -141,4 +104,4 @@
     > cambricon = ["llama-cn"]
     > ```
     >
-17. ...
+16. ...
