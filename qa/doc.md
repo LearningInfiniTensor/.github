@@ -27,6 +27,7 @@
    > # Windows 系统则查看 C:\Users\<Your Username>\.ssh 文件夹下
    > # 存在可直接看第三步
    > ```
+   >
    > **第二步：生成 ssh key**
    >
    > ```shell
@@ -34,6 +35,7 @@
    > # 一直回车即可
    > # Windows 系统下同理，不想要后面一串也可以直接运行 ssh-keygen 指令
    > ```
+   >
    > **第三步：获取 ssh key 公钥内容并添加到 Github**
    >
    > 复制 `id_rsa.pub` 文件内的内容，之后 Github 右上角点击头像->Settings->SSH and GPG keys->右上角蓝色 New SSH key 按钮->将复制的内容粘贴到 Key 输入框中添加 title 以便管理->最后点击 Add SSH key 即可。
@@ -121,6 +123,7 @@
     >     }
     > }
     > ```
+    >
     > **若还出现以上错误，或不能正确运行建议参考第16问关闭nvidia features运行**
     > ![clang_error](clang_error.png)
     > 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
