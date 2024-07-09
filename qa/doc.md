@@ -27,7 +27,6 @@
    > # Windows 系统则查看 C:\Users\<Your Username>\.ssh 文件夹下
    > # 存在可直接看第三步
    > ```
-   >
    > **第二步：生成 ssh key**
    >
    > ```shell
@@ -35,7 +34,6 @@
    > # 一直回车即可
    > # Windows 系统下同理，不想要后面一串也可以直接运行 ssh-keygen 指令
    > ```
-   >
    > **第三步：获取 ssh key 公钥内容并添加到 Github**
    >
    > 复制 `id_rsa.pub` 文件内的内容，之后 Github 右上角点击头像->Settings->SSH and GPG keys->右上角蓝色 New SSH key 按钮->将复制的内容粘贴到 Key 输入框中添加 title 以便管理->最后点击 Add SSH key 即可。
@@ -97,4 +95,44 @@
 
     > 暂时还没有，有基础的可以看[上期训练营的回放](https://opencamp.cn/os2edu/camp/2024spring/stage/10?tab=video)
     >
-15. ...
+15. 运行InfiniLM进行模型cast转换操作发生错误
+
+    > ![cast_error_nvcc](cast_error_nvcc.png)
+    > 遇到以上输出为项目代码中写死的架构号对于Nvidia老卡不兼容导致，需要在 `devices/nvidia-gpu/build.rs`中将两个80改为对应显卡的架构号
+    >
+    > ```rust
+    > // in ./devices/nvidia-gpu/build.rs
+    >
+    > ﻿fn main() {
+    >     use build_script_cfg::Cfg;
+    >     use search_cuda_tools::find_cuda_root;
+    >
+    >     let cuda = Cfg::new("detected_cuda");
+    >     if find_cuda_root().is_some() {
+    >         cuda.define();
+    >         println!("cargo:rerun-if-changed=src/sample.cu");
+    >         cc::Build::new()
+    >             .cuda(true)
+    >             .flag("-gencode")
+    >             .flag("arch=compute_80,code=sm_80") // 修改此处两个80为对应显卡架构号
+    >             .flag("-allow-unsupported-compiler")
+    >             .file("src/sample.cu")
+    >             .compile("sample");
+    >     }
+    > }
+    > ```
+    > **若还出现以上错误，或不能正确运行建议参考第16问关闭nvidia features运行**
+    >
+16. InfiniLM不用Nvidia显卡能运行吗？
+
+    > 可以的，不过现在即使不用Nvidia显卡，检测到环境也会编译。也可以在 `xtask/Cargo.toml`里关掉默认 `features`解决
+    >
+    > ```toml
+    > ...
+    >
+    > [features]
+    > default = ["nvidia", "cambricon"] # 去掉nvidia即可
+    > nvidia = ["llama-nv", "llama-nv-distributed"]
+    > cambricon = ["llama-cn"]
+    > ```
+    >
