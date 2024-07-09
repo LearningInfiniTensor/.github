@@ -95,7 +95,7 @@
 
     > 暂时还没有，有基础的可以看[上期训练营的回放](https://opencamp.cn/os2edu/camp/2024spring/stage/10?tab=video)
     >
-15. 运行InfiniLM进行模型cast转换操作发生错误
+15. 运行InfiniLM进行模型cast转换操作发生 `nvcc`和 `clang`相关错误
 
     > ![cast_error_nvcc](cast_error_nvcc.png)
     > 遇到以上输出为项目代码中写死的架构号对于Nvidia老卡不兼容导致，需要在 `devices/nvidia-gpu/build.rs`中将两个80改为对应显卡的架构号
@@ -103,7 +103,7 @@
     > ```rust
     > // in ./devices/nvidia-gpu/build.rs
     >
-    > ﻿fn main() {
+    > fn main() {
     >     use build_script_cfg::Cfg;
     >     use search_cuda_tools::find_cuda_root;
     >
@@ -122,10 +122,12 @@
     > }
     > ```
     > **若还出现以上错误，或不能正确运行建议参考第16问关闭nvidia features运行**
+    > ![clang_error](clang_error.png)
+    > 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
     >
 16. InfiniLM不用Nvidia显卡能运行吗？
 
-    > 可以的，不过现在即使不用Nvidia显卡，检测到环境也会编译。也可以在 `xtask/Cargo.toml`里关掉默认 `features`解决
+    > 可以的，不过现在即使不用Nvidia显卡，检测到环境也会编译。也可以在`xtask/Cargo.toml`里关掉默认`features`解决
     >
     > ```toml
     > ...
@@ -136,3 +138,4 @@
     > cambricon = ["llama-cn"]
     > ```
     >
+17. ...
