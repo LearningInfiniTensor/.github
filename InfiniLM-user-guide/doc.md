@@ -220,7 +220,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 > }
 > ```
 >
-> **若还出现以上错误，或不能正确运行建议参考[Q&A中第14问]关闭nvidia features运行**
+> **若还出现以上错误，或不能正确运行建议参考[Q&A中第15问](../qa/doc.md)关闭nvidia features运行**
 >
 
 > ![clang_error](clang_error.png)
