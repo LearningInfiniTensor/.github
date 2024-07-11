@@ -114,14 +114,14 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   执行：
 
   ```bash
-  cargo generate --model tinyllama-origin_f16 --prompt "Once upon a time,"
+  cargo generate --model tinyllama_origin_f16 --prompt "Once upon a time,"
   ```
 
   输出：
 
   ```plaintext
   Finished `release` profile [optimized] target(s) in 0.22s
-     Running `target\release\xtask.exe generate --model tinyllama-origin_f16 --prompt "Once upon a time,"`
+     Running `target\release\xtask.exe generate --model tinyllama_origin_f16 --prompt "Once upon a time,"`
 
   Once upon a time, there was a young girl named Lily. Lily was a kind and gentle soul, always looking for ways to help others. She loved to read, and her favorite book was about a brave knight who saved a princess from a dragon.
 
@@ -133,7 +133,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   用户可能发现，对于相同的模型和提示词，每次生成的结果完全相同。这是因为模型默认采用“最优”的采样策略。这种采样方式也可能产生极长或重复的结果。通过设置随机采样参数，可以得到多样性的结果，且可能更符合人类阅读习惯：
 
   ```bash
-  cargo generate --model tinyllama-origin_f16 --prompt "Once upon a time," --temperature 0.9 --top-p 0.9 --top-k 100
+  cargo generate --model tinyllama_origin_f16 --prompt "Once upon a time," --temperature 0.9 --top-p 0.9 --top-k 100
   ```
 
   额外的 3 个参数，`temperature` 影响模型的随机性，推荐取值范围 [0.5, 2.0]；`top-p` 和 `top-k` 影响采样的范围，`top-p` 推荐取值范围 [0.5, 1.0]，`top-k` 推荐取值范围 [20, 200]。
@@ -143,14 +143,14 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   执行此命令：
 
   ```bash
-  cargo chat --model tinyllama-origin_f16
+  cargo chat --model tinyllama_origin_f16
   ```
 
   启动对话：
 
   ```plaintext
       Finished `release` profile [optimized] target(s) in 0.22s
-       Running `target\release\xtask.exe chat --model ..\tinyllama-origin_f16\`
+       Running `target\release\xtask.exe chat --model ..\tinyllama_origin_f16\`
 
   ######################################
 
