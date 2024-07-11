@@ -239,8 +239,7 @@ let model = llama::Storage::load_safetensors(&model_dir).unwrap();
 ...
 ```
 
-这行代码将 `--model` 指定的模型路径通过 `load_safetensors` 方法加载到内存，最后 `unwrap()` 报错
-更深入定位通过查看 `load_safetensors` 方法实现结合报错信息可定位报错原因：
+这行代码将 `--model` 指定的模型路径通过 `load_safetensors` 方法加载到内存，最后 `unwrap()` 报错。更深入定位通过查看 `load_safetensors` 方法实现结合报错信息可定位报错原因：
 
 ```rust
 pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadError> {
@@ -253,4 +252,4 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 
 这里应该是在 `let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;` 报错返回了一个 `Io` 错误；`from_reader` 返回错误类型为 `Json`，并不符合报错信息；`load_from_dir` 返回错误的 `message` 为 `"No valid safetensors file found"`，故也不符合。
 
-> *ps: 最后提醒注意杀毒软件对编译出来的xtask可执行文件识别为病毒进行查杀*
+> **NOTICE** 注意杀毒软件对编译出的xtask可执行文件识别为病毒进行查杀
