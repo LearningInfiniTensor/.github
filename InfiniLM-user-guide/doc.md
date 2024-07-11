@@ -253,3 +253,9 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 这里应该是在 `let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;` 报错返回了一个 `Io` 错误；`from_reader` 返回错误类型为 `Json`，并不符合报错信息；`load_from_dir` 返回错误的 `message` 为 `"No valid safetensors file found"`，故也不符合。
 
 > **NOTICE** 注意杀毒软件对编译出的xtask可执行文件识别为病毒进行查杀
+
+### `thread 'tokio-runtime-worker' paniced at ...` 和 `thred 'main' paniced at ...`
+
+![session](chat-session-error.png)
+
+以上输出原因为运行 `cargo chat --model` 指定的模型路径不正确导致，请检查提供的模型路径。
