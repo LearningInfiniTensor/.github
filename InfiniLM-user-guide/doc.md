@@ -197,27 +197,27 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
 以上输出的原因是项目代码中写死了一处架构号对于 Nvidia 老卡不兼容，需要在 `devices/nvidia-gpu/build.rs` 中将两个 80 改为对应显卡的架构号。架构号可查询[官方网站](https://developer.nvidia.com/cuda-gpus)。
 
-> ```rust
-> // in ./devices/nvidia-gpu/build.rs
->
-> fn main() {
->     use build_script_cfg::Cfg;
->     use search_cuda_tools::find_cuda_root;
->
->     let cuda = Cfg::new("detected_cuda");
->     if find_cuda_root().is_some() {
->         cuda.define();
->         println!("cargo:rerun-if-changed=src/sample.cu");
->         cc::Build::new()
->             .cuda(true)
->             .flag("-gencode")
->             .flag("arch=compute_80,code=sm_80") // 修改此处两个 80 为对应显卡架构号
->             .flag("-allow-unsupported-compiler")
->             .file("src/sample.cu")
->             .compile("sample");
->     }
-> }
-> ```
+```rust
+// in ./devices/nvidia-gpu/build.rs
+
+fn main() {
+    use build_script_cfg::Cfg;
+    use search_cuda_tools::find_cuda_root;
+
+    let cuda = Cfg::new("detected_cuda");
+    if find_cuda_root().is_some() {
+        cuda.define();
+        println!("cargo:rerun-if-changed=src/sample.cu");
+        cc::Build::new()
+            .cuda(true)
+            .flag("-gencode")
+            .flag("arch=compute_80,code=sm_80") // 修改此处两个 80 为对应显卡架构号
+            .flag("-allow-unsupported-compiler")
+            .file("src/sample.cu")
+            .compile("sample");
+    }
+}
+```
 
 > **NOTICE** 若修改为正确的架构号后仍出现此错误，可能因为 Nvidia 工具链未正确安装。可关闭 nvidia features，见 [Q&A 中第 15 问](../qa/doc.md)。
 
