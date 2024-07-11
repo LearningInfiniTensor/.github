@@ -229,3 +229,31 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 >
 > 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
 >
+
+> ![err_cast_not_found](err_cast_not_found.png)
+>
+> **关键字**：`thread 'main' panicked at xtask\src\cast.rs:29:66: ... Io(Os { code: 2, kind: NotFound, message: "No such file or directory" }) ...`
+>
+> 遇到以上输出一般是`--model`指定的模型路径问题，请检查指定的模型路径是否正确，查看源代码`./xtask/src/cast.rs:29:66`可知：
+>
+> ```rust
+> ...
+> let model = llama::Storage::load_safetensors(&model_dir).unwrap();
+> ...
+> ```
+>
+> 这行代码将`--model`指定的模型路径通过`load_safetensors`方法加载到内存，最后`unwrap()`报错
+> 更深入定位通过查看`load_safetensors`方法实现结合报错信息可定位报错原因：
+>
+> ```rust
+> pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadError> {
+>     let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;
+>     let config: ConfigJson = serde_json::from_reader(&config).map_err(Json)?;
+>     let model = SafeTensors::load_from_dir(model_dir)?.share();
+>     ...
+> }
+> ```
+>
+> 这里应该是在`let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;`报错返回了一个`Io`错误；`from_reader`返回错误类型为`Json`，并不符合报错信息；`load_from_dir`返回错误的`message`为`"No valid safetensors file found"`，故也不符合。
+> *ps: 最后提醒注意杀毒软件对编译出来的xtask可执行文件识别为病毒进行查杀*
+>
