@@ -183,21 +183,20 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
 ## 运行中的常见问题
 
-> ![out-of-bound](err-idx-out-of-bound.png)
->
-> **关键字**：`index out of bounds:`
->
-> 遇到以上输出为模型（model.safetensors）文件拉取不完整导致，对于 lfs 大文件需要手动下载放入模型文件中。
->
-> 另外，运行 InfiniLM 需要将 Rust 版本更新至最新的 1.79.0 以上，即最新的 stable 或更高的 nightly。
->
+### `index out of bounds:`
 
-> ![cast_error_nvcc](cast_error_nvcc.png)
->
-> **关键字**：`... with args nvcc did not execute successfully`
->
-> 遇到以上输出为项目代码中写死的架构号对于Nvidia老卡不兼容导致，需要在 `devices/nvidia-gpu/build.rs`中将两个80改为对应显卡的架构号
->
+![out-of-bound](err-idx-out-of-bound.png)
+
+以上输出的原因是使用 git clone 模型仓库，但未安装或初始化 git lfs，导致模型文件（model.safetensors）仍是大文件占位符。
+
+不推荐使用 git 克隆模型仓库，推荐直接下载需要的文件。返回[步骤 3](#3-下载模型) 操作。
+
+### `... with args nvcc did not execute successfully`
+
+![nvcc](err-nvcc.png)
+
+以上输出的原因是项目代码中写死了一处架构号对于 Nvidia 老卡不兼容，需要在 `devices/nvidia-gpu/build.rs` 中将两个 80 改为对应显卡的架构号。架构号可查询[官方网站](https://developer.nvidia.com/cuda-gpus)。
+
 > ```rust
 > // in ./devices/nvidia-gpu/build.rs
 >
@@ -212,48 +211,45 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 >         cc::Build::new()
 >             .cuda(true)
 >             .flag("-gencode")
->             .flag("arch=compute_80,code=sm_80") // 修改此处两个80为对应显卡架构号
+>             .flag("arch=compute_80,code=sm_80") // 修改此处两个 80 为对应显卡架构号
 >             .flag("-allow-unsupported-compiler")
 >             .file("src/sample.cu")
 >             .compile("sample");
 >     }
 > }
 > ```
->
-> **若还出现以上错误，或不能正确运行建议参考[Q&A中第15问](../qa/doc.md)关闭nvidia features运行**
->
 
-> ![clang_error](clang_error.png)
->
-> **关键字**：`Unable to find libclang:`
->
-> 遇到以上输出因为没有安装 `clang`环境导致，安装方法和用途可参考[文档](https://github.com/LearningInfiniTensor/.github/blob/main/InfiniLM-user-guide/doc.md)（注：若按照第16问关闭nvidia features则不用安装 `clang`）
->
+> **NOTICE** 若修改为正确的架构号后仍出现此错误，可能因为 Nvidia 工具链未正确安装。可关闭 nvidia features，见 [Q&A 中第 15 问](../qa/doc.md)。
 
-> ![err_cast_not_found](err_cast_not_found.png)
->
-> **关键字**：`thread 'main' panicked at xtask\src\cast.rs:29:66: ... Io(Os { code: 2, kind: NotFound, message: "No such file or directory" }) ...`
->
-> 遇到以上输出一般是`--model`指定的模型路径问题，请检查指定的模型路径是否正确，查看源代码`./xtask/src/cast.rs:29:66`可知：
->
-> ```rust
-> ...
-> let model = llama::Storage::load_safetensors(&model_dir).unwrap();
-> ...
-> ```
->
-> 这行代码将`--model`指定的模型路径通过`load_safetensors`方法加载到内存，最后`unwrap()`报错
-> 更深入定位通过查看`load_safetensors`方法实现结合报错信息可定位报错原因：
->
-> ```rust
-> pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadError> {
->     let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;
->     let config: ConfigJson = serde_json::from_reader(&config).map_err(Json)?;
->     let model = SafeTensors::load_from_dir(model_dir)?.share();
->     ...
-> }
-> ```
->
-> 这里应该是在`let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;`报错返回了一个`Io`错误；`from_reader`返回错误类型为`Json`，并不符合报错信息；`load_from_dir`返回错误的`message`为`"No valid safetensors file found"`，故也不符合。
-> *ps: 最后提醒注意杀毒软件对编译出来的xtask可执行文件识别为病毒进行查杀*
->
+### `Unable to find libclang:`
+
+![clang](err-clang.png)
+
+以上输出的原因是安装了 Nvidia 工具链，但没有安装 `clang`。安装方法和用途可[本文 1.5 节](#1-准备-rust-环境)，或关闭 nvidia features，见 [Q&A 中第 15 问](../qa/doc.md)。
+
+### `thread 'main' panicked at xtask\src\cast.rs:29:66: ... Io(Os { code: 2, kind: NotFound, message: "No such file or directory" }) ...`
+
+![err_cast_not_found](err_cast_not_found.png)
+
+遇到以上输出原因一般是`--model`指定的模型路径问题，请检查指定的模型路径是否正确。查看源代码`./xtask/src/cast.rs:29:66`可知：
+
+```rust
+...
+let model = llama::Storage::load_safetensors(&model_dir).unwrap();
+...
+```
+
+这行代码将`--model`指定的模型路径通过`load_safetensors`方法加载到内存，最后`unwrap()`报错
+更深入定位通过查看`load_safetensors`方法实现结合报错信息可定位报错原因：
+
+```rust
+pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadError> {
+    let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;
+    let config: ConfigJson = serde_json::from_reader(&config).map_err(Json)?;
+    let model = SafeTensors::load_from_dir(model_dir)?.share();
+    ...
+}
+```
+
+这里应该是在`let config = File::open(model_dir.as_ref().join("config.json")).map_err(Io)?;`报错返回了一个`Io`错误；`from_reader`返回错误类型为`Json`，并不符合报错信息；`load_from_dir`返回错误的`message`为`"No valid safetensors file found"`，故也不符合。
+*ps: 最后提醒注意杀毒软件对编译出来的xtask可执行文件识别为病毒进行查杀*
