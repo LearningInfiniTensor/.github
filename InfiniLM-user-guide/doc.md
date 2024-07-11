@@ -229,7 +229,7 @@ fn main() {
 
 ### `thread 'main' panicked at xtask\src\cast.rs:29:66: ... Io(Os { code: 2, kind: NotFound, message: "No such file or directory" }) ...`
 
-![err_cast_not_found](err_cast_not_found.png)
+![not-found](err-cast-not-found.png)
 
 遇到以上输出原因一般是 `--model` 指定的模型路径问题，请检查指定的模型路径是否正确。查看源代码 `./xtask/src/cast.rs:29:66` 可知：
 
