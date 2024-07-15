@@ -259,3 +259,15 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 ![session](chat-session-error.png)
 
 以上输出原因为运行 `cargo chat --model` 指定的模型路径不正确导致，请检查提供的模型路径。
+
+### `error[E0658]: inline-const is experimental`
+
+![experimental](err-experimental.png)
+
+以上输出因为Rust版本过低不支持特性导致，请检查自己的 `rustc` 版本，必要时请更新，目前测试 `stable` 的1.79.0和大于等于1.79.0版本的 `nightly` 都可以运行。
+
+### `range end index 2336927755350992246 out of  range for slice of length 127`
+
+![out-of-range](err-idx-out-of-range.png)
+
+在执行 `cast` 模型操作时出现以上输出一般是因为模型文件不完整导致，同 [`out of bounds:`问题](#index-out-of-bounds) 参考 [步骤 3](#3-下载模型) 解决。
