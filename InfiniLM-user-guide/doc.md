@@ -271,3 +271,9 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 ![out-of-range](err-idx-out-of-range.png)
 
 在执行 `cast` 模型操作时出现以上输出一般是因为模型文件不完整导致，同 [`out of bounds:`问题](#index-out-of-bounds) 参考 [步骤 3](#3-下载模型) 解决。
+
+### chat的输出胡言乱语怎么办？
+
+![cmd-args](cmd-args.png)
+
+可以通过调整采样参数（ `temperature` / `top-k` / `top-p`）来调整输出内容，亦或者是换个更大的Llama模型试试
