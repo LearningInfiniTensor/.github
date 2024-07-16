@@ -18,6 +18,10 @@ InfiniTensor 2024 夏季训练营开营仪式将于 2024 年 7 月 20 日晚 20:
 
 参考[基于 Rust 的大模型推理引擎使用教程](../InfiniLM-user-guide/doc.md)完成实践。
 
+另导学阶段需要学员熟悉后续评分系统 [exam-grading](https://github.com/LearningInfiniTensor/exam-grading) 的使用
+
+参考 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md) 完成实践
+
 ## 支持团队 🤝
 
 [InfiniTensor](https://github.com/InfiniTensor) 是基于清华大学高性能所科研团队建立的开源组织，主要研究领域包括人工智能编译器、大模型推理系统和国产硬件的生态建设。团队成员来自清华大学、中科院计算所以及其他科研院所、企事业单位。组织成立以来，发展出下列主要项目：
