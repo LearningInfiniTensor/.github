@@ -140,7 +140,7 @@
     > 若设备确实存在N卡，这种情况为检测不到你的CUDA，一般来说看一下环境变量 `$CUDA_ROOT`。
     > **NOTICE** Windows环境下可通过 powershell `$env:CUDA_ROOT` 进行查看。Linux则使用 `echo $CUDA_ROOT` 查看
     > 若没有则需要检查 CUDA toolkit 的安装后再试，确认装好了 CUDA toolkit，然后设置 `CUDA_ROOT` 环境变量，之后运行 `cargo clean` 后再重新编译运行。若编译产生大量warnings且报错失败，可以选择：
-    > i. `export CXX=g++-13` 指定 g++ 编译器版本，再次编译运行
+    > i. `export CXX=g++-<version>` 指定 g++ 编译器版本，再次编译运行
     > ii. 换个干净环境重新来（docker）
     > iii. 弃坑关了 feature 退回 CPU
     > 理想运行输出：
