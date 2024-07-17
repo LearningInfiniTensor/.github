@@ -162,4 +162,18 @@
 
     > InfiniLM通过调用 [find_cuda_helper](https://crates.io/crates/find_cuda_helper) 查找CUDA环境
 
-26. ...
+26. 运行 `exam-grading` 提交评测报错找不到子模块
+
+    > ![not-found](exam-submodule-not-found.png)
+    > 以上输出一般是因为添加的子模块GitHub仓库权限为private导致的，将要添加为子模块的仓库权限设置为public即可。
+
+27. 除了 `TinyLlama` 还有没有其他能在InfiniLM框架中运行的更大的模型？
+
+    > 可以上 huggingface 上寻找一下，不过Llama 2和3在模型结构上兼容，但 `tokenizer` 不兼容，导致跑不起来。
+    > 也可以看一下启元推出的九格8B模型：[模型仓库 README](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md)
+
+28. 用的mac air，配置在后续跟不跟的上呢？
+
+    > CUDA方向不行，其它都没问题
+
+29. ...
