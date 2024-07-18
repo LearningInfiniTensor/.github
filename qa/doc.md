@@ -176,4 +176,8 @@
 
     > CUDA方向不行，其它都没问题
 
-29. ...
+29. exam-grading：如果 initialize submodules and check for experiments 成功了，但是 test job for other submodules 跳过了是什么原因？
+
+    > 原因是没检测到 `exams` 目录，test job for other submodules 这个任务只有在检测到 `exams` 目录存在才会运行
+
+30. ...
