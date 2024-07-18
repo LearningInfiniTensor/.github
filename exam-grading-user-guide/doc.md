@@ -60,6 +60,8 @@ git submodule update --remote
 
 ![grading](grading-res.png)
 
+> **NOTICE** 此处提交的内容为新增的 `exams` 目录，若使用子模块方式还会有一个 `.gitsubmodule` 文件
+
 目标运行结果：
 
 ![expect](expect-res.png)
