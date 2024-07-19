@@ -180,4 +180,12 @@
 
     > 原因是没检测到 `exams` 目录，test job for other submodules 这个任务只有在检测到 `exams` 目录存在才会运行
 
-30. ...
+30. 是否也能让 InfiniLM 支持 AMD 的显卡呢？
+
+    > 暂时没有这个支持计划，NVIDIA 之后是国产硬件，
+
+31. Mac 的 GPU 是不是还没有支持？
+
+    > 由于不知道 Mac 的 GPU 如何开发，就当 Mac 没有 GPU吧
+
+32. ...
