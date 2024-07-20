@@ -18,8 +18,10 @@
 - 1.1 Windows Native
 
   > **NOTICE** Windows 用户推荐采用原生 Windows 环境开发 Rust 项目。
+  >
 
   > **NOTICE** Rust 工具链依赖 Visual Studio 作为基础，参考[微软官方文档](https://learn.microsoft.com/zh-cn/windows/dev-environment/rust/setup#install-visual-studio-recommended-or-the-microsoft-c-build-tools)安装。下述简单步骤假设用户已经准备好 Visual Studio 或 Microsoft C++ 生成工具。
+  >
 
   如图所示，下载并运行安装程序。
 
@@ -28,23 +30,22 @@
   Just press enter!
 
   ![Install Rust](1-1-2.png)
-
 - 1.2 WSL
 
   > **NOTICE** 仅针对已有配置好的 WSL2 且不方便在原生 Windows 环境开发的情况，因此配置 WSL2 的步骤不再介绍。
+  >
 
   > **NOTICE** Windows 用户首选原生 Windows 环境，其次 WSL2，**不推荐**使用第三方虚拟机软件。
+  >
 
   在 WSL2 Bash 中使用此命令安装 Rust（Just press enter!）：
 
   ```bash
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   ```
-
 - 1.3 Linux
 
   原生 Linux 环境安装方式同 WSL。
-
 - 1.4 更新 Rust
 
   本项目依赖 Rust 1.79（Latest Stable），已安装 Rust 工具链的用户使用此命令升级：
@@ -52,7 +53,6 @@
   ```bash
   rustup update
   ```
-
 - 1.5 Clang 配置
 
   本项目基于 bindgen 实现 Nvidia 加速支持，环境中需要安装 Clang。希望使用 Nvidia 加速的用户，请参考 [bindgen 官方手册](https://rust-lang.github.io/rust-bindgen/requirements.html)步骤安装。
@@ -94,10 +94,13 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   ```
 
   > **NOTICE** 上述 `tinyllama_origin` 目录为示例占位路径，请用户自行替换成实际路径。
+  >
 
   > **NOTICE** 上述形式不意味着需要将模型文件放到 InfiniLM 项目根目录。且**不推荐**用户将模型文件放入项目目录，以免干扰 git 追踪。
+  >
 
   > **NOTICE** `--model` 参数允许传入相对路径或绝对路径。例如，在 `InfiniLM` 目录同级创建 `tinyllama_origin` 目录时，参数为 `--model ../tinyllama_origin`。
+  >
 
   > **NOTICE** Windows 上安装了 Nvidia 加速环境的用户此命令将额外产生多个形式如下的警告：
   >
@@ -106,9 +109,9 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   > ```
   >
   > 这些警告可以忽略，不影响命令执行。
+  >
 
   此命令执行成功后将在 `tinyllama_origin` 目录同级生成 `tinyllama_origin_f16` 文件夹，其中包含转换后的模型文件。
-
 - 4.2 文本生成及采样参数
 
   执行：
@@ -129,6 +132,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   ```
 
   > **NOTICE** 此命令的 `--model` 参数相关要求与前述 cast 命令相同。
+  >
 
   用户可能发现，对于相同的模型和提示词，每次生成的结果完全相同。这是因为模型默认采用“最优”的采样策略。这种采样方式也可能产生极长或重复的结果。通过设置随机采样参数，可以得到多样性的结果，且可能更符合人类阅读习惯：
 
@@ -137,7 +141,6 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   ```
 
   额外的 3 个参数，`temperature` 影响模型的随机性，推荐取值范围 [0.5, 2.0]；`top-p` 和 `top-k` 影响采样的范围，`top-p` 推荐取值范围 [0.5, 1.0]，`top-k` 推荐取值范围 [20, 200]。
-
 - 4.3 对话
 
   执行此命令：
@@ -178,8 +181,10 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
   用户可交互输入开始对话。
 
   > **NOTICE** 此命令的 `--model` 参数相关要求与前述 cast 命令相同。
+  >
 
   > **NOTICE** 此命令默认同样采用“最优”的采样策略，设置随机采样参数的方式与前述 generate 命令相同。
+  >
 
 ## 运行中的常见问题
 
@@ -219,13 +224,13 @@ fn main() {
 }
 ```
 
-> **NOTICE** 若修改为正确的架构号后仍出现此错误，可能因为 Nvidia 工具链未正确安装。可关闭 nvidia features，见 [Q&A 中第 15 问](../qa/doc.md)。
+> **NOTICE** 若修改为正确的架构号后仍出现此错误，可能因为 Nvidia 工具链未正确安装。可关闭 nvidia features，见 [Q&amp;A 中第 15 问](../qa/doc.md)。
 
 ### `Unable to find libclang:`
 
 ![clang](err-clang.png)
 
-以上输出的原因是安装了 Nvidia 工具链，但没有安装 `clang`。安装方法和用途可[本文 1.5 节](#1-准备-rust-环境)，或关闭 nvidia features，见 [Q&A 中第 15 问](../qa/doc.md)。
+以上输出的原因是安装了 Nvidia 工具链，但没有安装 `clang`。安装方法和用途可[本文 1.5 节](#1-准备-rust-环境)，或关闭 nvidia features，见 [Q&amp;A 中第 15 问](../qa/doc.md)。
 
 ### `thread 'main' panicked at xtask\src\cast.rs:29:66: ... Io(Os { code: 2, kind: NotFound, message: "No such file or directory" }) ...`
 
@@ -277,3 +282,9 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 ![cmd-args](cmd-args.png)
 
 可以通过调整采样参数（ `temperature` / `top-k` / `top-p`）来调整输出内容，亦或者是换个更大的Llama模型试试
+
+### `$CUDA_ROOT` 配置了，但 `Turbo environment not detected`
+
+![not-detected](turbo-not-detected.png)
+
+以上输出建议编写一个 binary crate 用 [find_cuda_driver](https://crates.io/crates/find_cuda_helper) 搜索CUDA环境做进一步分析
