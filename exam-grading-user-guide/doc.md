@@ -121,3 +121,48 @@ git rm ./exams
 ```
 
 > **NOTICE** 必要时需加上 `--force` 或 `-f` 强制删除
+
+### 获取 `exam-grading` 模板仓库的更新
+
+由于人手一个评分系统，所以要同步原模板仓库的更新到自己这里步骤会稍显麻烦，当然最简单的方式就是重新根据最新的 `exam-grading` 建一个。不过接下来还是会提供 git 的操作方法：
+
+1. 首先需要在自己的 `exam-grading` 本地建立远端主机连接
+
+    ```bash
+    # 使用 SSH keys 连接
+    git remote add template <target-template-ssh>
+
+    # 使用 access token 连接
+    git remote set-url origin <target-tempalte-url-with-access-token>
+    ```
+
+2. 将 `template` 上的 `main` 分支合并到本地端的 `main` 分支
+
+    ```bash
+    # 获取远端修改
+    git fetch template
+
+    # 切换本地 exam-grading 到 main 分支
+    git checkout main
+
+    # 将 template 的 main 分支合并到本地 main 分支
+    git merge template/main --allow-unrelated-histories
+    ```
+
+    > **NOTICE** `--allow-unrelated-histories` 参数因为 git 从 `2.9.0` 开始不允许合并没有共同祖先的分支，不带此参数会报错：`fatal: refusing to merge unrelated histories`
+
+3. 解决合并产生的冲突，基本无脑选 incoming 即可
+
+    ```bash
+    <<<<<<< HEAD
+    ...
+    ... # 本地 repo 的内容，不保留
+    ...
+    =======
+    ...
+    ... # template 合并的新内容，保留
+    ...
+    >>>>>>> template/master
+    ```
+
+> **NOTICE** 冲突解决不自信可以咨询一下助教老师，或图省事选择重新创建克隆
