@@ -204,4 +204,21 @@
 
     > 没有，随时都可以
 
-36. 
+36. AI编译器会用到MLIR吗？
+
+    > 会的
+
+37. cpp 和 Rust 是同时学习还是选择一个语言学习？
+
+    > 两个是同步进行的，只完成一个方向就能够晋级，有余力的话推荐都试试
+
+38. InfiniLM会对昇腾芯片适配么？
+
+    > 已经在做了（指新建Github仓库）
+
+39. 基础阶段的题在哪里？
+
+    > [C++基础：learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx) 和 [Rust基础：rustlings](https://rustlings.cool/)
+    > 习题提交评分参考：[自动评分系统使用说明](https://github.com/LearningInfiniTensor/.github/blob/main/exam-grading-user-guide/doc.md)
+
+40. ...
