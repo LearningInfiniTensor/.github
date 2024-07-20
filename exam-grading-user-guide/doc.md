@@ -66,8 +66,58 @@ git submodule update --remote
 
 ![expect](expect-res.png)
 
+## 基础阶段的使用
+
+同样按照[以上步骤](#步骤)在exam-grading项目根目录中添加测试目录：
+
+**直接目录：**
+
+```bash
+# learning-cxx
+git clone <target-test-repo> ./learning-cxx
+cd learning-cxx
+# 确保为最新
+git pull
+
+# rustlings
+git clone <target-test-repo> ./rustlings
+cd rustlings
+# 确保为最新
+git pull
+```
+
+**子模块：**
+
+```bash
+# learning-cxx
+git submodule add <target-test-repo> ./learning-cxx
+
+# rustlings
+git submodule add <target-test-repo> ./rustlings
+
+# 确保为最新
+git submodule update --remote
+```
+
 ## 其它
+
+### 可参考资料
 
 Git子模块的使用可参考 [7.11 Git 工具 - 子模块](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)
 
 运行过程中产生的问题请查阅[Q&A](../qa/doc.md)，或在微信群聊中咨询助教老师
+
+### 移除子模块
+
+```bash
+# 删除子模块
+git submodule deinit <target-submodule-name>
+# 删除目录
+git rm <target-submodule-name>
+
+# 例子
+git submodule deninit ./exams
+git rm ./exams
+```
+
+> **NOTICE** 必要时需加上 `--force` 或 `-f` 强制删除
