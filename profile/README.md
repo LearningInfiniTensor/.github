@@ -12,15 +12,17 @@ InfiniTensor 2024 夏季训练营开营仪式将于 2024 年 7 月 20 日晚 20:
 
 参加仪式：\# 腾讯会议：242-395-560 或链接 [https://meeting.tencent.com/dm/6LV9k8mUVl8X](https://meeting.tencent.com/dm/6LV9k8mUVl8X)。
 
+![开营仪式时间表](startup-time.png)
+
 ## 导学阶段实践 💻
 
 我们鼓励学员通过实践理解项目。初学者推荐在本机跑起 [InfiniLM](https://github.com/InfiniTensor/InfiniLM) 项目，以熟悉 git 命令，了解模型文件、推理引擎的概念和推理的过程。
 
 参考[基于 Rust 的大模型推理引擎使用教程](../InfiniLM-user-guide/doc.md)完成实践。
 
-另导学阶段需要学员熟悉后续评分系统 [exam-grading](https://github.com/LearningInfiniTensor/exam-grading) 的使用
+另导学阶段需要学员熟悉后续评分系统 [exam-grading](https://github.com/LearningInfiniTensor/exam-grading) 的使用。
 
-参考 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md) 完成实践
+参考 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md) 完成实践。
 
 ## 支持团队 🤝
 
