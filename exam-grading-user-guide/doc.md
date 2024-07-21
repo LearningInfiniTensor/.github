@@ -113,11 +113,14 @@ Git子模块的使用可参考 [7.11 Git 工具 - 子模块](https://git-scm.com
 # 删除子模块
 git submodule deinit <target-submodule-name>
 # 删除目录
-git rm <target-submodule-name>
+git rm -r <target-submodule-name>
+# 删除子模块相关文件（注：在exam-grading目录下）
+rm -rf .git/modules/<target-submodule-name>
 
 # 例子
 git submodule deninit ./exams
-git rm ./exams
+git rm -r./exams
+rm -rf .git/modules/exams
 ```
 
 > **NOTICE** 必要时需加上 `--force` 或 `-f` 强制删除
@@ -188,4 +191,4 @@ git rm ./exams
 
     这种情况请查看 actions 具体运行步骤中的输出查看报错
 
-4. 
+4. ...
