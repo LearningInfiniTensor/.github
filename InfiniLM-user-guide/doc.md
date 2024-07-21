@@ -30,6 +30,7 @@
   Just press enter!
 
   ![Install Rust](1-1-2.png)
+
 - 1.2 WSL
 
   > **NOTICE** 仅针对已有配置好的 WSL2 且不方便在原生 Windows 环境开发的情况，因此配置 WSL2 的步骤不再介绍。
@@ -40,9 +41,10 @@
 
   在 WSL2 Bash 中使用此命令安装 Rust（Just press enter!）：
 
-  ```bash
+  ```shell
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   ```
+
 - 1.3 Linux
 
   原生 Linux 环境安装方式同 WSL。
@@ -50,9 +52,10 @@
 
   本项目依赖 Rust 1.79（Latest Stable），已安装 Rust 工具链的用户使用此命令升级：
 
-  ```bash
+  ```shell
   rustup update
   ```
+
 - 1.5 Clang 配置
 
   本项目基于 bindgen 实现 Nvidia 加速支持，环境中需要安装 Clang。希望使用 Nvidia 加速的用户，请参考 [bindgen 官方手册](https://rust-lang.github.io/rust-bindgen/requirements.html)步骤安装。
@@ -61,13 +64,13 @@
 
 使用
 
-```bash
+```shell
 git clone https://github.com/InfiniTensor/InfiniLM
 ```
 
 或配置 ssh 并使用：
 
-```bash
+```shell
 git clone git@github.com:InfiniTensor/InfiniLM.git
 ```
 
@@ -89,7 +92,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
   将上一步骤下载的 3 个文件移动到同一个目录，假设为 `tinyllama_origin`。然后进入 InfiniLM 项目根目录并执行此命令，以转换模型格式：
 
-  ```bash
+  ```shell
   cargo cast --model tinyllama_origin --dt f16
   ```
 
@@ -116,7 +119,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
   执行：
 
-  ```bash
+  ```shell
   cargo generate --model tinyllama_origin_f16 --prompt "Once upon a time,"
   ```
 
@@ -136,7 +139,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
   用户可能发现，对于相同的模型和提示词，每次生成的结果完全相同。这是因为模型默认采用“最优”的采样策略。这种采样方式也可能产生极长或重复的结果。通过设置随机采样参数，可以得到多样性的结果，且可能更符合人类阅读习惯：
 
-  ```bash
+  ```shell
   cargo generate --model tinyllama_origin_f16 --prompt "Once upon a time," --temperature 0.9 --top-p 0.9 --top-k 100
   ```
 
@@ -145,7 +148,7 @@ git clone git@github.com:InfiniTensor/InfiniLM.git
 
   执行此命令：
 
-  ```bash
+  ```shell
   cargo chat --model tinyllama_origin_f16
   ```
 

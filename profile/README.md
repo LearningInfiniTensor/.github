@@ -6,23 +6,46 @@
 |
 [**常见问题**](../qa/doc.md)
 
-## 开营仪式 🎉🎉🎉
+## 基础阶段 🧑‍💻💯
 
-InfiniTensor 2024 夏季训练营开营仪式将于 2024 年 7 月 20 日晚 20:00 于线上举行。
+本次训练营基础阶段时间为 2024 年 7 月 20 日至 8 月 4 日，主要学习 C++ 和 Rust 语言基础知识。授课方式为直播课+在线答疑+习题，C++ 和 Rust 方向可二选一，至少一种语言的习题全部完成可晋级专业阶段。
 
-参加仪式：\# 腾讯会议：242-395-560 或链接 [https://meeting.tencent.com/dm/6LV9k8mUVl8X](https://meeting.tencent.com/dm/6LV9k8mUVl8X)。
+习题评分方式参见 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md)。
 
-![开营仪式时间表](startup-time.png)
+### C++ 基础课程 ➕
 
-## 导学阶段实践 💻
+[习题（learning-cxx）](https://github.com/LearningInfiniTensor/learning-cxx)
+|
+[教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1)
+|
+[晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1?tab=rank)
 
-我们鼓励学员通过实践理解项目。初学者推荐在本机跑起 [InfiniLM](https://github.com/InfiniTensor/InfiniLM) 项目，以熟悉 git 命令，了解模型文件、推理引擎的概念和推理的过程。
+上课时间：
 
-参考[基于 Rust 的大模型推理引擎使用教程](../InfiniLM-user-guide/doc.md)完成实践。
+- 7 月 22 日（周一）14:00-15:00
+- 7 月 25 日（周四）14:00-15:00
+- 7 月 29 日（周一）14:00-15:00
+- 8 月 1 日（周四）14:00-15:00
 
-另导学阶段需要学员熟悉后续评分系统 [exam-grading](https://github.com/LearningInfiniTensor/exam-grading) 的使用。
+### Rust 基础课程 🦀
 
-参考 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md) 完成实践。
+[习题（rustlings）](https://rustlings.cool/)
+|
+[教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2)
+|
+[晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2?tab=rank)
+
+上课时间：
+
+- 7 月 22 日（周一）15:30-16:30
+- 7 月 25 日（周四）15:30-16:30
+- 7 月 29 日（周一）15:30-16:30
+- 8 月 1 日（周四）15:30-16:30
+
+## 训练营仪式 🎉🎉🎉
+
+- 开营仪式已于 2024 年 7 月 20 日晚 20:00 顺利举行，可观看[腾讯会议回放](https://meeting.tencent.com/v2/cloud-record/share?id=81da07c1-a905-4955-b968-a8caa9644271&from=3)， 密码 `DWH7`；
+- 项目选题会将于 2024 年 8 月 17 日晚 20:00 线上举行，腾讯会议 #405-408-245 或点击[链接](https://meeting.tencent.com/dm/CFTCSJnmJkeL)入会；
 
 ## 支持团队 🤝
 
