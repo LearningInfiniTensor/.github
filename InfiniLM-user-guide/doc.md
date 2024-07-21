@@ -288,3 +288,9 @@ pub fn load_safetensors(model_dir: impl AsRef<Path>) -> Result<Self, FileLoadErr
 ![not-detected](turbo-not-detected.png)
 
 以上输出建议编写一个 binary crate 用 [find_cuda_driver](https://crates.io/crates/find_cuda_helper) 搜索CUDA环境做进一步分析
+
+### `paniced at devices/nvidia-gpu/src/sample.rs:118:13`
+
+![old-nv](old-nv-err.png)
+
+遇到以上输出是 NVIDIA 老卡对原架构适配原因，可切换 InfiniLM 分支到 `dev-operators` 再次尝试。报错原因主要是因为编译的时候有个架构号，主分支写死的，`dev-operators` 可以自动感知但是依赖 xmake 编译。
