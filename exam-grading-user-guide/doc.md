@@ -73,17 +73,23 @@ git submodule update --remote
 **直接目录：**
 
 ```bash
-# learning-cxx
+# 将learning-cxx克隆到exam-grading目录外（也就是exam-grading的同级目录）
 git clone <target-test-repo> ./learning-cxx
 cd learning-cxx
 # 确保为最新
 git pull
+# 然后将目录复制进exam-grading
+cp -r . ../exam-grading
+cd ../exam-grading
 
-# rustlings
+# 将rustlings克隆到exam-grading目录外（也就是exam-grading的同级目录）
 git clone <target-test-repo> ./rustlings
 cd rustlings
 # 确保为最新
 git pull
+# 然后将目录复制进exam-grading
+cp -r . ../exam-grading
+cd ../exam-grading
 ```
 
 **子模块：**
