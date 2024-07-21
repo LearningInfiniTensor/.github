@@ -37,13 +37,14 @@ cd exam-grading
 
 #### 3.1 直接目录
 
-通过直接目录的方式添加测试目录，需要学员将目标测试目录克隆到评分系统中：
+通过直接目录的方式添加测试目录，需要学员将将目标测试目录克隆到 exam-grading 目录外（也就是 exam-grading 的同级目录）：
 
 ```bash
 git clone <target-test-repo> ./exams
 cd exams
 # 确保为最新
 git pull
+# 然后将目录复制进exam-grading
 ```
 
 #### 3.2 子模块
@@ -79,8 +80,6 @@ cd learning-cxx
 # 确保为最新
 git pull
 # 然后将目录复制进exam-grading
-cp -r . ../exam-grading
-cd ../exam-grading
 
 # 将rustlings克隆到exam-grading目录外（也就是exam-grading的同级目录）
 git clone <target-test-repo> ./rustlings
@@ -88,8 +87,6 @@ cd rustlings
 # 确保为最新
 git pull
 # 然后将目录复制进exam-grading
-cp -r . ../exam-grading
-cd ../exam-grading
 ```
 
 **子模块：**
