@@ -221,4 +221,8 @@
     > [C++基础：learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx) 和 [Rust基础：rustlings](https://rustlings.cool/)
     > 习题提交评分参考：[自动评分系统使用说明](https://github.com/LearningInfiniTensor/.github/blob/main/exam-grading-user-guide/doc.md)
 
-40. ...
+40. 基础阶段 `rustlings` 和 `learning-cxx` 的问题
+
+    > 详情请见：[习题Q&A](../exam-grading-user-guide/doc.md#习题qa)
+
+41. ...
