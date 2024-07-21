@@ -166,3 +166,26 @@ git rm ./exams
     ```
 
 > **NOTICE** 冲突解决不自信可以咨询一下助教老师，或图省事选择重新创建克隆
+
+## 习题Q&A
+
+1. `learning-cxx` 第20题
+
+    ![20](learning-cxx-20.png)
+    83行处修改更新
+
+    ```C++
+    for (auto i = 0u; i < sizeof(d0) / sizeof(double); ++ i)
+    ```
+
+2. `learning-cxx` 第15题
+
+    补充参考资料：[不完整类型](https://learn.microsoft.com/zh-cn/cpp/c-language/incomplete-types?view=msvc-170)
+
+3. 本地测试通过，但云端却没过，不知道为什么？
+
+    ![output](see-fail-output.png)
+
+    这种情况请查看 actions 具体运行步骤中的输出查看报错
+
+4. 
