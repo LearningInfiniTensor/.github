@@ -123,7 +123,7 @@ git rm -r <target-submodule-name>
 rm -rf .git/modules/<target-submodule-name>
 
 # 例子
-git submodule deninit ./exams
+git submodule deinit ./exams
 git rm -r./exams
 rm -rf .git/modules/exams
 ```
