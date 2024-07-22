@@ -183,7 +183,7 @@ rm -rf .git/modules/exams
     83行处修改更新
 
     ```C++
-    for (auto i = 0u; i < sizeof(d0) / sizeof(double); ++ i)
+    for (auto i = 0u; i < sizeof(d0) / sizeof(*d0); ++ i)
     ```
 
 2. `learning-cxx` 第15题
