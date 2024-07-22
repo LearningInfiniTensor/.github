@@ -216,15 +216,44 @@
 
     > 已经在做了（指新建Github仓库）
 
-## 基础阶段常见问题 
+## 基础阶段常见问题
 
 1. 基础阶段的题在哪里？
 
-    > [C++基础：learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx) 和 [Rust基础：rustlings](https://rustlings.cool/)
-    > 习题提交评分参考：[自动评分系统使用说明](https://github.com/LearningInfiniTensor/.github/blob/main/exam-grading-user-guide/doc.md)
+   > [C++基础：learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx) 和 [Rust基础：rustlings](https://rustlings.cool/)
+   > 习题提交评分参考：[自动评分系统使用说明](https://github.com/LearningInfiniTensor/.github/blob/main/exam-grading-user-guide/doc.md)
 
 2. 基础阶段 `rustlings` 和 `learning-cxx` 的问题
 
-    > 详情请见：[习题Q&A](../exam-grading-user-guide/doc.md#习题qa)
+   > 详情请见：[习题Q&A](../exam-grading-user-guide/doc.md#习题qa)
 
-3. ...
+3. 习题怎么用？评测系统怎么用？
+
+   > 1. Rust 习题，参考 [rustlings](https://rustlings.cool/) 官网步骤部署到本地，可以看基础阶段第一课，杨老师演示了使用方式。之后将本地代码推送到一个新的空的Github仓库（创建时候不勾选 `README` 和 `.gitignore` 即可）
+   > ![create-repo](create-repo.png)
+   > 2. Cpp 习题，使用方式和导学阶段的测试题方法类似，只是[源码](https://github.com/LearningInfiniTensor/learning-cxx)需要用 fork 拉取、子模块/目录需要命名为 `learning-cxx`，然后 push 到远程仓库。
+   > 3. 评测系统，看[导学阶段](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/0?tab=video)里，有录制的视频，讲解评测系统的使用。
+
+4. 为什么我的习题无法 push 到远程仓库？
+
+   > 因为并没有正确获取习题，一般出现于直接克隆了 `learning-cxx` 而没有 fork 之后再克隆自己的，导致没有权限修改了也无法推送；
+
+5. 已经完成了习题，并且添加了子模块，为什么没有成绩？
+
+   > 可能是你没有重新推送 `exam-grading`，评分只有向 `exam-grading` 提交或手动运行，可观看 [导学阶段-评分系统使用视频](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/0?tab=video)
+
+6. 为什么我的成绩出现在了导学阶段排行榜，而没有在基础阶段排行榜？
+
+   > 原因可能有两个：
+   >
+   > 1. 子模块命名不对
+   > 2. 没更新 exam-grading
+   >
+   > 请自行排查
+   >
+   > 1. 原因一解决方式：通过移除子模块重新加入或自行修改子模块相关文件修复
+   > 2. 原因二解决方式：通过删除 Github 以及本地评分系统并重新根据 template 创建后拉取到本地
+   >
+   > **NOTICE** 以上操作均可参考 [Exam Grading使用教程](../exam-grading-user-guide/doc.md)
+
+7. ...
