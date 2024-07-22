@@ -89,6 +89,8 @@ git pull
 # 然后将目录复制进exam-grading
 ```
 
+> **NOTICE** 目标测试目录中存在 .git 目录可能会导致问题，删除后再试
+
 **子模块：**
 
 ```bash
