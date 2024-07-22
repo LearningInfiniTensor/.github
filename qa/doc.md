@@ -54,7 +54,7 @@
 
 7. InfiniLM 运行报错怎么办？
 
-   > 详情请见[InfiniLM运行中常见问题](../InfiniLM-user-guide/doc.md#qa)，若未能找到问题解决方法请在群里提问或找老师解决
+   > 详情请见 [InfiniLM 指南/常见问题](https://github.com/InfiniTensor/InfiniLM/blob/main/docs/user-guide/doc.md#%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)，若未能找到问题解决方法请在群里提问或找老师解决。
 
 8. 用 InfiniLM 对话，模型不会说中文怎么办？
 
