@@ -1,4 +1,4 @@
-# 导学阶段常见问题
+## 导学阶段常见问题
 
 1. 除了 C++ 和 Rust 还需要什么专业基础嘛？
 
@@ -216,13 +216,15 @@
 
     > 已经在做了（指新建Github仓库）
 
-39. 基础阶段的题在哪里？
+## 基础阶段常见问题 
+
+1. 基础阶段的题在哪里？
 
     > [C++基础：learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx) 和 [Rust基础：rustlings](https://rustlings.cool/)
     > 习题提交评分参考：[自动评分系统使用说明](https://github.com/LearningInfiniTensor/.github/blob/main/exam-grading-user-guide/doc.md)
 
-40. 基础阶段 `rustlings` 和 `learning-cxx` 的问题
+2. 基础阶段 `rustlings` 和 `learning-cxx` 的问题
 
     > 详情请见：[习题Q&A](../exam-grading-user-guide/doc.md#习题qa)
 
-41. ...
+3. ...
