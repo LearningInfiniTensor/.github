@@ -179,21 +179,32 @@ rm -rf .git/modules/exams
 
 1. `learning-cxx` 第20题
 
-    ![20](learning-cxx-20.png)
-    83行处修改更新
-
-    ```C++
-    for (auto i = 0u; i < sizeof(d0) / sizeof(*d0); ++ i)
-    ```
+    > ![20](learning-cxx-20.png)
+    > 83行处修改更新
+    >
+    > ```C++
+    > for (auto i = 0u; i < sizeof(d0) / sizeof(*d0); ++ i)
+    > ```
 
 2. `learning-cxx` 第15题
 
-    补充参考资料：[不完整类型](https://learn.microsoft.com/zh-cn/cpp/c-language/incomplete-types?view=msvc-170)
+    > 补充参考资料：[不完整类型](https://learn.microsoft.com/zh-cn/cpp/c-language/incomplete-types?view=msvc-170)
 
 3. 本地测试通过，但云端却没过，不知道为什么？
 
-    ![output](see-fail-output.png)
+    > ![output](see-fail-output.png)
+    >
+    > 这种情况请查看 actions 具体运行步骤中的输出查看报错
 
-    这种情况请查看 actions 具体运行步骤中的输出查看报错
+4. 关于张量
 
-4. ...
+    > 请查看基础阶段第一次课程录播，[Rust](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2?tab=video) 和 [C++](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1?tab=video) 均有讲解
+
+5. 在 Linux 上 `xmake` 构建 `learning-cxx` 项目报错：`undefined reference to 'pthread_create'`
+
+    > ![pthread-create-err](pthread-create-err.png)
+    >
+    > 遇到以上问题一般是因为 `libc` 版本过旧，更新即可
+    > 参考链接：https://developers.redhat.com/articles/2021/12/17/why-glibc-234-removed-libpthread
+
+6. 
