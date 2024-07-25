@@ -203,9 +203,8 @@ rm -rf .git/modules/exams
 5. 在 Linux 上 `xmake` 构建 `learning-cxx` 项目报错：`undefined reference to 'pthread_create'`
 
     > ![pthread-create-err](pthread-create-err.png)
-    >
     > 遇到以上问题一般是因为 `libc` 版本过旧，更新即可
-    > 参考链接：https://developers.redhat.com/articles/2021/12/17/why-glibc-234-removed-libpthread
+    > [参考链接](https://developers.redhat.com/articles/2021/12/17/why-glibc-234-removed-libpthread)
 
 6. 关于强转右值
 
