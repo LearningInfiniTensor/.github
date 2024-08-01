@@ -56,6 +56,7 @@ git submodule add <target-test-repo> ./exams
 # 确保为最新
 git submodule update --remote
 ```
+> **NOTICE** `exams` 目录名写死，否则检测不到不会运行对应评分。
 
 添加测试目录后，学员即可提交更改到远程仓库，评测系统将会自动运行，运行结果可以在仓库actions界面查看：
 
@@ -103,6 +104,8 @@ git submodule add <target-test-repo> ./rustlings
 # 确保为最新
 git submodule update --remote
 ```
+
+> **NOTICE** `learning-cxx` 和 `rustlings` 目录名写死，否则检测不到，不会执行对应评分。
 
 ## 其它
 
