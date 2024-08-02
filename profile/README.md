@@ -6,41 +6,32 @@
 |
 [**常见问题**](../qa/doc.md)
 
+## 专业阶段 🖥️📃
+
+本次训练营专业阶段时间为 2024 年 8 月 5 日至 8 月 17 日，授课方式为直播课+在线答疑+习题。课程分为 4 个方向，其中方向 1、2、3 设置作业，至少一项作业达到合格可晋级项目阶段。方向 4 为讲座，不设置作业也不涉及晋级。
+
+- 方向 1. AI 编译器 [习题](https://github.com/LearningInfiniTensor/TinyInfiniTensor) | [教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/3)
+- 方向 2. 算力硬件适配 [教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/4) | *按课程要求提交报告*
+- 方向 3. 大模型推理系统 [习题](https://github.com/LearningInfiniTensor/learning-lm-rs) | [教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/5)
+- 方向 4. 大模型前沿技术 [教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/6)
+
 ## 基础阶段 🧑‍💻💯
 
 本次训练营基础阶段时间为 2024 年 7 月 20 日至 8 月 4 日，主要学习 C++ 和 Rust 语言基础知识。授课方式为直播课+在线答疑+习题，C++ 和 Rust 方向可二选一，至少一种语言的习题全部完成可晋级专业阶段。
 
-习题评分方式参见 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md)。
+- C++ 基础课程 ➕ [习题 learning-cxx](https://github.com/LearningInfiniTensor/learning-cxx)
+  |
+  [课程视频](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1?tab=video)
+  |
+  [晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1?tab=rank)
 
-### C++ 基础课程 ➕
+- Rust 基础课程 🦀 [习题 rustlings](https://rustlings.cool/)
+  |
+  [课程视频](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2?tab=video)
+  |
+  [晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2?tab=rank)
 
-[习题（learning-cxx）](https://github.com/LearningInfiniTensor/learning-cxx)
-|
-[教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1)
-|
-[晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/1?tab=rank)
-
-上课时间：
-
-- 7 月 22 日（周一）14:00-15:00
-- 7 月 25 日（周四）14:00-15:00
-- 7 月 29 日（周一）14:00-15:00
-- 8 月 1 日（周四）14:00-15:00
-
-### Rust 基础课程 🦀
-
-[习题（rustlings）](https://rustlings.cool/)
-|
-[教室](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2)
-|
-[晋级榜](https://opencamp.cn/InfiniTensor/camp/2024summer/stage/2?tab=rank)
-
-上课时间：
-
-- 7 月 22 日（周一）15:30-16:30
-- 7 月 25 日（周四）15:30-16:30
-- 7 月 29 日（周一）15:30-16:30
-- 8 月 1 日（周四）15:30-16:30
+> 习题评分方式参见 [Exam Grading 自动测试评分系统使用教程](../exam-grading-user-guide/doc.md)。
 
 ### 深度学习基础知识 📖
 
