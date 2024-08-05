@@ -312,12 +312,24 @@
 
     > 基本是这样，AI 编译器方向在专业阶段会给一个简化版的 AI compiler 供大家快速上手学习，只需要在 CPU 上跑。项目阶段在 InfiniTensor 和 RefactorGrapgh 中进行选题开发，这两个项目都支持多设备后端，包括 CPU。
 
-20. ...
+20. ... 
 
 ## 专业阶段常见问题
 
 1. 如何部署TinyInfiniTensor？
 
-    > [InfiniTensor项目部署](https://github.com/LearningInfiniTensor/TinyInfiniTensor/blob/main/docs/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.md)
+   > [InfiniTensor项目部署](https://github.com/LearningInfiniTensor/TinyInfiniTensor/blob/main/docs/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.md)
 
-2. ...
+2. 没安装显卡驱动出现：`Driver Version: 555.85 CUDA Version: 12.5` ,是不是不用安装 Linux 驱动了?我的显卡是 1060 5G ,官网搜 1060 得到到的 `NVIDIA-Linux-x86_64-550.107.02` 版本低,还装不上
+
+   > 测试是否能跑 [CUDA代码](https://github.com/xgqdut2016/cuda_code)，如果能跑这里面的代码，说明就OK了
+
+3. 训练营通关了有实习机会吗？
+
+   > 到时候可联系老师获取详情
+
+4. 最后的项目阶段是和专业阶段的方向有关吗？
+
+   > 没有约束关系，无论专业阶段做完什么作业只要晋级，项目阶段仍然可以随意选。但是一些项目和专业阶段作业是承接关系，如果专业阶段的部分没做，项目可能会做的不顺利。
+
+5. ...
