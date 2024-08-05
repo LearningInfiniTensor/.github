@@ -332,4 +332,14 @@
 
    > 没有约束关系，无论专业阶段做完什么作业只要晋级，项目阶段仍然可以随意选。但是一些项目和专业阶段作业是承接关系，如果专业阶段的部分没做，项目可能会做的不顺利。
 
-5. ...
+5. 编译 `TinyInfiniTensor` 过程中 CMake 报错找不到 Python
+
+   > ![not-found](py-not-found.png)
+   > 运行指令 `apt-get install python3-dev` 即可
+
+6. 编译 `TinyInfiniTensor` 过程中 CMake subdirectory 报错
+
+   > ![cmake-err](cmake-err-3rd-party.png)
+   > 因为项目子模块为初始化拉取，运行指令 `git submodule update --init` 即可
+
+7. ...
