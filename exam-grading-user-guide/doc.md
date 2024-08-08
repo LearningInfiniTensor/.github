@@ -70,7 +70,7 @@ git submodule update --remote
 
 ## 基础阶段的使用
 
-同样按照[以上步骤](#步骤)的前两步准备环境，之后在exam-grading项目根目录中添加测试目录：
+同样按照[以上步骤](#步骤)的前两步准备环境和创建仓库并克隆到本地，之后在 `exam-grading` 项目根目录中添加测试目录：
 
 **直接目录：**
 
@@ -106,6 +106,49 @@ git submodule update --remote
 ```
 
 > **NOTICE** `learning-cxx` 和 `rustlings` 目录名写死，否则检测不到，不会执行对应评分。
+
+## 专业阶段的使用
+
+专业阶段方向一的 `TinyInfiniTensor` 和方向三的 `leaning-lm-rs` 讲通过 `exam-grading` 进行评分。使用方式同样按照[以上步骤](#步骤)的前两步准备环境和创建仓库并克隆到本地，之后在 `exam-grading` 项目根目录中添加测试目录：
+
+> **NOTICE** 可选通过"[获取 `exam-grading` 模板仓库的更新](#获取-exam-grading-模板仓库的更新)"来对已有的 `exam-grading` 同步远程模板仓库的更新。
+
+**直接目录：**
+
+```bash
+# 将 TinyInfiniTensor 克隆到 exam-grading 目录外（也就是 exam-grading 的同级目录）
+git clone <target-test-repo> ./TinyInfiniTensor
+cd TinyInfiniTensor
+# 确保为最新
+git pull
+# 然后将目录复制进 exam-grading
+
+# 将 learning-lm-rs 克隆到 exam-grading 目录外（也就是 exam-grading 的同级目录）
+git clone <target-test-repo> ./learning-lm-rs
+cd learning-lm-rs
+# 确保为最新
+git pull
+# 然后将目录复制进 exam-grading
+```
+
+> **NOTICE** 目标测试目录中存在 .git 目录可能会导致问题，删除后再试
+
+**子模块：**
+
+```bash
+# TinyInfiniTensor
+git submodule add <target-test-repo> ./TinyInfiniTensor
+
+# learning-lm-rs
+git submodule add <target-test-repo> ./learning-lm-rs
+
+# 确保为最新
+git submodule update --remote
+```
+
+> **NOTICE** `TinyInfiniTensor` 和 `learning-lm-rs` 目录名写死，否则检测不到，不会执行对应评分。
+
+可在子模块内直接做题，之后先提交子模块仓库，再提交 `exam-grading` 的即可。也可选择在其它位置完成题目后，通过直接目录形式复制进 `exam-grading` 提交评分，或通过子模块方法添加目录后提交评分。
 
 ## 其它
 
