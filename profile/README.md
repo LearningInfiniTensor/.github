@@ -6,11 +6,11 @@
 |
 [**常见问题**](../qa/doc.md)
 
-## 项目选题会
+## 结营仪式
 
-项目选题会将于 2024 年 8 月 17 日晚 20:00 线上举行，腾讯会议 #405-408-245 或点击[链接](https://meeting.tencent.com/dm/CFTCSJnmJkeL)入会。
+结营仪式将于 2024 年 9 月 29 日晚 20:00 线上举行，腾讯会议 #847-359-514 或点击[链接](https://meeting.tencent.com/dm/T9ZnSNUn8GRN)入会。
 
-![项目选题会时间表](select-time.png)
+![结营仪式时间表](closing-time.png)
 
 ## 专业阶段 🖥️📃
 
