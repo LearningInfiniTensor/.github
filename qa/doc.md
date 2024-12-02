@@ -174,9 +174,9 @@
     > 可以上 huggingface 上寻找一下，不过Llama 2和3在模型结构上兼容，但 `tokenizer` 不兼容，导致跑不起来。
     > 也可以看一下启元推出的九格8B模型：[模型仓库 README](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md)
 
-28. 用的mac air，配置在后续跟不跟的上呢？
+28. 用的 mac air，配置在后续跟不跟的上呢？
 
-    > CUDA方向不行，其它都没问题
+    > CUDA 方向不行，其它都没问题
 
 29. exam-grading：如果 initialize submodules and check for experiments 成功了，但是 test job for other submodules 跳过了是什么原因？
 
@@ -216,7 +216,7 @@
 
 38. InfiniLM会对昇腾芯片适配么？
 
-    > 已经在做了（指新建Github仓库）
+    > 基本完成
 
 ## 基础阶段常见问题
 
@@ -282,7 +282,6 @@
 
     > - 大模型推理系统方向作业和项目是一起的，项目是作业的延续；
     > - AI 编译器方向专业阶段是写作业，项目阶段参与 InfiniTensor/RefactorGraph 开发
-    > 
 
 13. 高性能计算那个方向要配置硬件的吗？
 
@@ -311,8 +310,6 @@
 19. 是不是只要导学阶段的模型能运行，后续除了算力硬件适配方向，需要支持 CUDA 的显卡，其它方向就没有特定的设备要求了？能跑起来导学阶段的模型就足够了嘛
 
     > 基本是这样，AI 编译器方向在专业阶段会给一个简化版的 AI compiler 供大家快速上手学习，只需要在 CPU 上跑。项目阶段在 InfiniTensor 和 RefactorGrapgh 中进行选题开发，这两个项目都支持多设备后端，包括 CPU。
-
-20. ... 
 
 ## 专业阶段常见问题
 
@@ -345,5 +342,3 @@
 7. 在 WSL 上执行 `nvidia-smi` 无法读取显卡并输出 `Segmentation Fault`，但在 Windows 上能正常输出。
 
    > 参考 [nvidia-smi segmentation fault in wsl2 but not in Windows](https://github.com/microsoft/WSL/issues/11277) 尝试降低驱动版本。
-
-8. ...
