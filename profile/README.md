@@ -2,7 +2,7 @@
 
 [Github 讨论](https://github.com/orgs/LearningInfiniTensor/discussions)
 |
-[**常见问题**](../qa/doc.md)
+[**常见问题**](../qa/doc-2024w.md)
 
 | 序号 | 季度 | 时间 | 教学网站
 |:---:|:----:|:---:|:-:
