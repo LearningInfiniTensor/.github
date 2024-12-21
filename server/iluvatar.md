@@ -45,6 +45,15 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/corex/lib
 clang++ -lcudart main.cu -o main
 ```
 
+## 与英伟达/CUDA 的主要差异
+
+| 项目            | 英伟达 GPU   | 天数智芯天垓
+|:---------------:|:----------:|:-:
+| 预定义宏         | `__NVCC__` | `__ILUVATAR__`
+| 双精度支持       | 全面支持     | 支持有限，建议不使用
+| 线程束 WARP_SIZE | 32         | 64
+| 线程块最大规模    | 1024 n     | 4096
+
 ## 基于 xmake 开发 cuda c 应用程序
 
 TODO
