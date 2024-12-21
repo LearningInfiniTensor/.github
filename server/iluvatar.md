@@ -1,6 +1,16 @@
-﻿# 天数服务器使用指南
+﻿# 天数智芯服务器使用指南
 
-[天垓 100 加速卡](https://www.iluvatar.com/productDetails?fullCode=cpjs-yj-xlxl-tg100)
+[了解天垓 100 加速卡](https://www.iluvatar.com/productDetails?fullCode=cpjs-yj-xlxl-tg100)
+
+## 目录
+
+- [登录](#登录)
+  - [创建并配置用户](#创建并配置用户)
+- [硬件状态监测](#硬件状态监测)
+- [CUDA 编译](#cuda-编译)
+  - [与英伟达 CUDA 的主要差异](#与英伟达-cuda-的主要差异)
+- [使用 xmake 开发 CUDA C 应用程序](#使用-xmake-开发-cuda-c-应用程序)
+- [Rust 开发指南](#rust-开发指南)
 
 ## 登录
 
@@ -10,7 +20,7 @@ ssh root@yaan.saas.iluvatar.com.cn -p <port>
 
 每个用户有自己的端口和密码。
 
-### 创建和切换用户
+### 创建并配置用户
 
 默认将提供 root 账户，但一切操作不推荐在 root 上进行，**强烈建议**创建一个新用户。
 可按以下步骤创建用户：
@@ -107,7 +117,7 @@ Max error: 0.000000
 SUCCESS
 ```
 
-## 与英伟达/CUDA 的主要差异
+### 与英伟达 CUDA 的主要差异
 
 | 项目            | 英伟达 GPU   | 天数智芯天垓
 |:---------------:|:----------:|:-:
@@ -116,15 +126,15 @@ SUCCESS
 | 线程束 WARP_SIZE | 32         | 64
 | 线程块最大规模    | 1024       | 4096
 
-## 基于 xmake 开发 cuda c 应用程序
+## 使用 xmake 开发 CUDA C 应用程序
 
 1. [xmake 安装](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
 
 TODO
 
-## rust 开发指南
+## Rust 开发指南
 
-1. [rust 工具链安装](https://www.rust-lang.org/zh-CN/tools/install)
+1. [Rust 工具链安装](https://www.rust-lang.org/zh-CN/tools/install)
 
    > 初始状态下 `curl` 不存在，需要
    >
