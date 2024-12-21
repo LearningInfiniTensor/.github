@@ -10,6 +10,52 @@ ssh root@yaan.saas.iluvatar.com.cn -p <port>
 
 每个用户有自己的端口和密码。
 
+### 创建和切换用户
+
+默认将提供 root 账户，但一切操作不推荐在 root 上进行，**强烈建议**创建一个新用户。
+可按以下步骤创建用户：
+
+> 创建用户方式不唯一，以下步骤仅供参考。
+
+1. 创建用户
+
+   ```shell
+   useradd -m <name>
+   ```
+
+2. 设置密码
+
+   ```shell
+   passwd <name>
+   ```
+
+   并按照提示输入密码两次。
+
+3. 通过用户组赋予权限
+
+   ```shell
+   usermod -aG sudo <name>
+   apt-get install sudo
+   ```
+
+4. 修改默认 shell
+
+   新用户使用的默认 shell 是 sh，可以修改为 bash。
+
+   先切换一次新用户：
+
+   ```shell
+   su <name>
+   ```
+
+   立即按 `ctrl+d` 退回即可。然后使用
+
+   ```shell
+   chsh -s /usr/bin/bash <name>
+   ```
+
+   将默认 shell 改为 bash，再登入新用户时可自动启动 bash。
+
 ## 硬件状态监测
 
 ```shell
@@ -32,17 +78,33 @@ ixsmi -l 1
 
 ## CUDA 编译
 
-工具链位于 `/usr/local/corex`，英伟达 `nvcc` 对应 `bin/clang++`，所有必要库在 `lib` 中。环境本身不带链接路径，需要添加：
+工具链位于 `/usr/local/corex`，英伟达 `nvcc` 对应 `bin/clang++`，所有必要库在 `lib` 中。若使用新用户，建议先添加相关环境变量以方便调用：
 
 ```shell
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/corex/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/corex/lib
+export COREX_HOME=/usr/local/corex
+export PATH=$PATH:$COREX_HOME/bin
+export LIBRARY_PATH=$LIBRARY_PATH:$COREX_HOME/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
 ```
 
 然后可以如常使用：
 
 ```shell
-clang++ -lcudart main.cu -o main
+clang++ -lcudart <src>.cu -o <program>
+```
+
+作为测试，可以尝试编译环境自带的 cuda 示例：
+
+```shell
+clang++ -lcudart $COREX_HOME/examples/cuda/saxpy.cu -o saxpy
+./saxpy
+```
+
+将输出：
+
+```plaintext
+Max error: 0.000000
+SUCCESS
 ```
 
 ## 与英伟达/CUDA 的主要差异
@@ -56,8 +118,18 @@ clang++ -lcudart main.cu -o main
 
 ## 基于 xmake 开发 cuda c 应用程序
 
+1. [xmake 安装](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
+
 TODO
 
 ## rust 开发指南
+
+1. [rust 工具链安装](https://www.rust-lang.org/zh-CN/tools/install)
+
+   > 初始状态下 `curl` 不存在，需要
+   >
+   > ```shell
+   > sudo apt-get install curl
+   > ```
 
 TODO
