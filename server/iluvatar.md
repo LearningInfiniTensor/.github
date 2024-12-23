@@ -130,16 +130,35 @@ SUCCESS
 
 1. [xmake 安装](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
 
-TODO
+2. TODO
 
 ## Rust 开发指南
 
 1. [Rust 工具链安装](https://www.rust-lang.org/zh-CN/tools/install)
 
-   > 初始状态下 `curl` 不存在，需要
-   >
-   > ```shell
-   > sudo apt-get install curl
-   > ```
+   如果 `curl` 不存在，可以使用 apt 安装：
 
-TODO
+   ```shell
+   sudo apt-get install curl
+   ```
+
+2. 配置必要环境变量
+
+   ```shell
+   export COREX_HOME=/usr/local/corex
+   export PATH=$PATH:$COREX_HOME/bin
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
+   ```
+
+   > - `PATH` 用于 bindgen 调用 clang 前端；
+   > - `LD_LIBRARY_PATH` 用于动态链接搜索依赖库；
+
+3. 基于 [cuda-driver](https://github.com/YdrMaster/cuda-driver) 开发
+
+   ```shell
+   git clone https://github.com/YdrMaster/cuda-driver
+   cd cuda-driver
+   cargo test -- --test-threads=1
+   ```
+
+   > 目前只能单线程测试，多线程下测试无法通过。
