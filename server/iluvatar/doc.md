@@ -128,18 +128,62 @@ SUCCESS
 
 ## 使用 xmake 开发 CUDA C 应用程序
 
-1. [xmake 安装](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
+1. 安装 [xmake](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
 
-2. TODO
+2. 配置必要环境变量
+
+   ```shell
+   export COREX_HOME=/usr/local/corex
+   export PATH=$PATH:$COREX_HOME/bin
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
+   ```
+
+   > - `PATH` 用于搜索工具链应用程序；
+   > - `LD_LIBRARY_PATH` 用于动态链接搜索依赖库；
+
+3. 创建项目
+
+   由于天数软件栈与英伟达的差异，配置项目时需要添加工具集定义和处理规则。
+
+   > 推荐直接拷贝 [xmake-sample](xmake-sample) 文件夹内容作为项目模板。
+
+   重点在于 [xmake.lua](xmake-sample/xmake.lua) 文件的内容，其中已经定义好了天数工具链需要的工具集设定和项目配置，只需要添加到目标即可：
+
+   ```lua
+   toolchain("iluvatar.toolchain")...
+   rule("iluvatar.env")...
+
+   target("iluvatar")
+       set_kind("binary")    -- 目标将编译为二进制可执行文件
+       add_files("src/*.cu") -- 目标使用的源文件是 src 目录下扩展名为 cu 的文件
+       add_links("cudart")   -- 首选动态链接 cudart 以免链接 cudart_static
+
+       set_toolchains("iluvatar.toolchain") -- 设置工具链
+       add_rules("iluvatar.env")            -- 添加自定义处理规则
+       set_values("cuda.rdc", false)        -- 关闭 -fcuda-rdc 以免生成依赖 cudadevrt 的代码
+   ```
+
+4. 编译执行
+
+   ```shell
+   xmake
+   xmake run
+   ```
 
 ## Rust 开发指南
 
-1. [Rust 工具链安装](https://www.rust-lang.org/zh-CN/tools/install)
+1. 安装 [Rust 工具链](https://www.rust-lang.org/zh-CN/tools/install)
 
    如果 `curl` 不存在，可以使用 apt 安装：
 
    ```shell
    sudo apt-get install curl
+   ```
+
+   安装：
+
+   ```shell
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
 2. 配置必要环境变量
