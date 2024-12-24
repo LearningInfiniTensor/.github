@@ -12,13 +12,17 @@
 - [使用 xmake 开发 CUDA C 应用程序](#使用-xmake-开发-cuda-c-应用程序)
 - [Rust 开发指南](#rust-开发指南)
 
+## 注意事项
+
+- **NOTICE** 下列所有命令中用 **`** 包围的内容需替换为实际值。
+
 ## 登录
 
 ```shell
-ssh root@yaan.saas.iluvatar.com.cn -p <port>
+ssh root@yaan.saas.iluvatar.com.cn -p `PORT`
 ```
 
-每个用户有自己的端口和密码。
+每个用户有自己的端口和密码，通过另外的渠道发放。
 
 ### 创建并配置用户
 
@@ -30,13 +34,13 @@ ssh root@yaan.saas.iluvatar.com.cn -p <port>
 1. 创建用户
 
    ```shell
-   useradd -m <name>
+   useradd -m `name`
    ```
 
 2. 设置密码
 
    ```shell
-   passwd <name>
+   passwd `name`
    ```
 
    并按照提示输入密码两次。
@@ -44,7 +48,7 @@ ssh root@yaan.saas.iluvatar.com.cn -p <port>
 3. 通过用户组赋予权限
 
    ```shell
-   usermod -aG sudo <name>
+   usermod -aG sudo `name`
    apt-get install sudo
    ```
 
@@ -55,16 +59,26 @@ ssh root@yaan.saas.iluvatar.com.cn -p <port>
    先切换一次新用户：
 
    ```shell
-   su <name>
+   su `name`
    ```
 
    立即按 `ctrl+d` 退回即可。然后使用
 
    ```shell
-   chsh -s /usr/bin/bash <name>
+   chsh -s /usr/bin/bash `name`
    ```
 
    将默认 shell 改为 bash，再登入新用户时可自动启动 bash。
+
+5. 添加必要环境变量
+
+   下列环境变量对于所有开发流程都是必备的，建议直接设置到 `~/.bashrc`。
+
+   ```shell
+   export COREX_HOME=/usr/local/corex
+   export PATH=$PATH:$COREX_HOME/bin
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
+   ```
 
 ## 硬件状态监测
 
@@ -88,25 +102,16 @@ ixsmi -l 1
 
 ## CUDA 编译
 
-工具链位于 `/usr/local/corex`，英伟达 `nvcc` 对应 `bin/clang++`，所有必要库在 `lib` 中。若使用新用户，建议先添加相关环境变量以方便调用：
+工具链位于 `/usr/local/corex`，英伟达 `nvcc` 对应 `bin/clang++`，所有必要库在 `lib` 中。
 
 ```shell
-export COREX_HOME=/usr/local/corex
-export PATH=$PATH:$COREX_HOME/bin
-export LIBRARY_PATH=$LIBRARY_PATH:$COREX_HOME/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
-```
-
-然后可以如常使用：
-
-```shell
-clang++ -lcudart <src>.cu -o <program>
+clang++ -lcudart -L$COREX_HOME/lib `src`.cu -o `program`
 ```
 
 作为测试，可以尝试编译环境自带的 cuda 示例：
 
 ```shell
-clang++ -lcudart $COREX_HOME/examples/cuda/saxpy.cu -o saxpy
+clang++ -lcudart -L$COREX_HOME/lib $COREX_HOME/examples/cuda/saxpy.cu -o saxpy
 ./saxpy
 ```
 
@@ -130,18 +135,7 @@ SUCCESS
 
 1. 安装 [xmake](https://xmake.io/#/zh-cn/getting_started?id=%e5%ae%89%e8%a3%85)
 
-2. 配置必要环境变量
-
-   ```shell
-   export COREX_HOME=/usr/local/corex
-   export PATH=$PATH:$COREX_HOME/bin
-   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
-   ```
-
-   > - `PATH` 用于搜索工具链应用程序；
-   > - `LD_LIBRARY_PATH` 用于动态链接搜索依赖库；
-
-3. 创建项目
+2. 创建项目
 
    由于天数软件栈与英伟达的差异，配置项目时需要添加工具集定义和处理规则。
 
@@ -163,7 +157,7 @@ SUCCESS
        set_values("cuda.rdc", false)        -- 关闭 -fcuda-rdc 以免生成依赖 cudadevrt 的代码
    ```
 
-4. 编译执行
+3. 编译执行
 
    ```shell
    xmake
@@ -186,18 +180,7 @@ SUCCESS
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-2. 配置必要环境变量
-
-   ```shell
-   export COREX_HOME=/usr/local/corex
-   export PATH=$PATH:$COREX_HOME/bin
-   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
-   ```
-
-   > - `PATH` 用于 bindgen 调用 clang 前端；
-   > - `LD_LIBRARY_PATH` 用于动态链接搜索依赖库；
-
-3. 基于 [cuda-driver](https://github.com/YdrMaster/cuda-driver) 开发
+2. 基于 [cuda-driver](https://github.com/YdrMaster/cuda-driver) 开发
 
    ```shell
    git clone https://github.com/YdrMaster/cuda-driver
