@@ -19,7 +19,7 @@
 ## 登录
 
 ```shell
-ssh root@yaan.saas.iluvatar.com.cn -p `PORT`
+ssh root@zibo.saas.iluvatar.com.cn -p `PORT`
 ```
 
 每个用户有自己的端口和密码，通过另外的渠道发放。
@@ -31,50 +31,45 @@ ssh root@yaan.saas.iluvatar.com.cn -p `PORT`
 
 > 创建用户方式不唯一，以下步骤仅供参考。
 
-1. 创建用户
+1. 起一个用户名
 
    ```shell
-   useradd -m `name`
+   export NEW_USER=`new-user-name`
    ```
 
-2. 设置密码
+2. 创建用户
 
    ```shell
-   passwd `name`
+   useradd -m $NEW_USER
+   ```
+
+3. 设置密码
+
+   ```shell
+   passwd $NEW_USER
    ```
 
    并按照提示输入密码两次。
 
-3. 通过用户组赋予权限
+4. 通过用户组赋予权限
 
    ```shell
-   usermod -aG sudo `name`
-   apt-get install sudo
+   usermod -aG sudo $NEW_USER
    ```
 
-4. 修改默认 shell
-
-   新用户使用的默认 shell 是 sh，可以修改为 bash。
-
-   先切换一次新用户：
+5. 修改默认 shell
 
    ```shell
-   su `name`
-   ```
-
-   立即按 `ctrl+d` 退回即可。然后使用
-
-   ```shell
-   chsh -s /usr/bin/bash `name`
+   chsh -s /usr/bin/bash $NEW_USER
    ```
 
    将默认 shell 改为 bash，再登入新用户时可自动启动 bash。
 
-5. 添加必要环境变量
+6. 添加必要环境变量
 
-   下列环境变量对于所有开发流程都是必备的，建议直接设置到 `~/.bashrc`。
+   下列环境变量对于所有开发流程都是必备的，建议登入新用户并直接设置到 `~/.bashrc`。
 
-   ```shell
+     ```shell
    export COREX_HOME=/usr/local/corex
    export PATH=$PATH:$COREX_HOME/bin
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
