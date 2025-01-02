@@ -55,6 +55,8 @@ ssh root@zibo.saas.iluvatar.com.cn -p `PORT`
 
    ```shell
    usermod -aG sudo $NEW_USER
+   apt-get update
+   apt-get install sudo
    ```
 
 5. 修改默认 shell
@@ -69,7 +71,7 @@ ssh root@zibo.saas.iluvatar.com.cn -p `PORT`
 
    下列环境变量对于所有开发流程都是必备的，建议登入新用户并直接设置到 `~/.bashrc`。
 
-     ```shell
+   ```shell
    export COREX_HOME=/usr/local/corex
    export PATH=$PATH:$COREX_HOME/bin
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COREX_HOME/lib
