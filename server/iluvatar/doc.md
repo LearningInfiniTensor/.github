@@ -186,3 +186,53 @@ SUCCESS
    ```
 
    > 目前只能单线程测试，多线程下测试无法通过。
+
+## hpc2torch 使用
+在天数上使用 hpc2torch 非常简单，仅需要设置好 pytorch 和修改 hpc2torch 部分配置文件即可。
+### pytorch
+默认情况 pytorch 是安装在 root 用户里，如果您使用的是非 root 用户需要导入以下环境变量。
+
+```shell
+export PYTHONPATH=/usr/local/corex/lib64/python3/dist-packages
+```
+
+操作完成之后可以通过可以通过`pip show torch`查看是否正常显示。
+
+### hpc2torch 配置
+我们需要在根目录的 CMakeLists.txt 文件中修改一些配置。
+#### 排除文件
+我们需要排除一些文件它们是 src/matmul/gpu/  src/softmax/gpu，这是因为 matmul 中的天数的一些定义与 nv 有些差异会导致无法编译，softmax 是因为天数中暂时没有 cudnn。
+
+可按照下图在指定位置添加以下代码解决
+![cmake 排除文件 ](cmake_exclude.png)
+
+```shell
+# 排除 src/matmul/gpu/  src/softmaxl/gpu 
+set(EXCLUDE_PATTERN "(src[/\\\\]matmul[/\\\\]gpu[/\\\\].*|src[/\\\\]softmax[/\\\\]gpu[/\\\\].*)")
+
+# 使用 list(FILTER ...) 来排除匹配 EXCLUDE_PATTERN 的文件
+list(FILTER CUDA_SOURCE_FILES EXCLUDE REGEX ${EXCLUDE_PATTERN})
+```
+#### 修改 cuda 编译选项
+我们仅需要按照下图把原来的`if(USE_CUDA)`更改为如图所示即可
+![编译选项](compilation_option.png)
+
+```shell
+if(USE_CUDA)
+    message(STATUS "CUDA build enabled.")
+    enable_language(CXX)
+    enable_language(CUDA)
+    list(APPEND ALL_SOURCE_FILES ${CUDA_SOURCE_FILES} ${CPP_SOURCE_FILES})
+    add_library(my_library SHARED ${ALL_SOURCE_FILES})# 创建库或可执行文件
+    include_directories("/usr/local/corex/include")
+    set_target_properties(my_library PROPERTIES
+        CUDA_ARCHITECTURES ivcore10
+    )
+    target_link_libraries(my_library cudnn cublas)#如果调用cudnn库需要链接cudnn, cublas
+```
+### 测试
+我们完成以上步骤之后，在根目录把 run.sh 更改成 cuda 的编译选项，然后运行编译脚本，观察是否成功编译，如果失败，请确认以上步骤是否操作正确。然后我们可以在根目录通过以下命令运行我们的 python 脚本测试我们的性能。
+>python3 ./test/attention.py --device cuda
+
+如果输出如下图所示，则证明成功
+![hpc2torch_test](hpc2torch_test.png)
