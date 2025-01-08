@@ -11,6 +11,7 @@
   - [与英伟达 CUDA 的主要差异](#与英伟达-cuda-的主要差异)
 - [使用 xmake 开发 CUDA C 应用程序](#使用-xmake-开发-cuda-c-应用程序)
 - [Rust 开发指南](#rust-开发指南)
+- [加载 PyTorch](#加载-pytorch)
 
 ## 注意事项
 
@@ -186,3 +187,13 @@ SUCCESS
    ```
 
    > 目前只能单线程测试，多线程下测试无法通过。
+
+## 加载 PyTorch
+
+服务器上已经为 root 安装好 PyTorch，新用户需要导入以下环境变量：
+
+```shell
+export PYTHONPATH=/usr/local/corex/lib64/python3/dist-packages
+```
+
+操作完成之后可以通过可以通过 `pip show torch` 查看是否正常显示。
