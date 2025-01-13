@@ -11,11 +11,9 @@
 
 ## 开营 🎉
 
-2025 年 1 月 5 日晚 20:00 将于 [#腾讯会议：884-457-471](https://meeting.tencent.com/dm/I9qQfw3KHOpm) 举行 2024 冬季大模型与人工智能系统训练营开营仪式。
+2024 冬季大模型与人工智能系统训练营开营仪式已于 2025 年 1 月 5 日晚 20:00 举行，可查看[回放](https://meeting.tencent.com/crm/2GG8Jvn4e2), 密码 L8RF。
 
-![开营仪式](startup.png)
-
-人工智能系统专业知识直播课程将于 1 月 6 日下午正式开始，配套算力资源也将陆续上线。专业知识课程将提供配套交流群供学员交流讨论。为降低管理压力，要求学员完成系统编程语言基础作业并提交到课程平台，然后方可进群。请学员于 1 月 2 日 8:00 后将个人中心页面（包含基本信息和成绩单）截图发送给助教老师，由助教老师邀请进群。
+人工智能系统专业知识直播课程已于 1 月 6 日下午正式开始，配套算力资源也已陆续上线。专业知识课程将提供配套交流群供学员交流讨论。为降低管理压力，要求学员完成系统编程语言基础作业并提交到课程平台，然后方可进群。请学员将个人中心页面（包含基本信息和成绩单）截图发送给助教老师，由助教老师邀请进群。
 
 截图示例：
 
@@ -57,7 +55,7 @@
 
 3. 招生人数增加
 
-   夏季全程报名人数约 1000 人，冬季开营前招生已超过 2200 人。
+   夏季全程报名人数约 1000 人，冬季现招生已超过 3000 人。
 
 ## 课程内容和说明文档
 
@@ -81,7 +79,17 @@
 
 ### 人工智能系统专业知识
 
+- [AI 编译器](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/3)
+- [大模型推理系统](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/4)
+- 并行编程语言
+  - [CUDA](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/5)
+  - [OpenCL](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/6)
+  - [Triton & 九齿](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/7)
+- [大模型前沿技术](https://opencamp.cn/InfiniTensor/camp/2024winter/stage/8)
+
 #### 国产算力使用指南
+
+目前国产算力已上线，请学员到专业知识群共享文档申请。
 
 - [天数智芯](/server/iluvatar/doc.md)
 - 沐曦集成电路 Comming...
